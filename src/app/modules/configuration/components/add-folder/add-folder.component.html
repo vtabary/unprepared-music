@@ -1,0 +1,34 @@
+<form clrForm clrLayout="vertical" [formGroup]="group" (submit)="onAdd()" #form>
+  <clr-modal [(clrModalOpen)]="addFolderModal">
+    <h3 class="modal-title" i18n="@@configuration.add-folder.add-folder-title">Add a folder</h3>
+    <div class="modal-body">
+      <clr-input-container>
+        <label i18n="@@configuration.add-folder.folder-path">Folder path</label>
+        <input type="text" clrInput formControlName="folder" required />
+        <clr-control-error i18n="@@configuration.add-folder.required-label">This field is required!</clr-control-error>
+      </clr-input-container>
+      <app-browse-folder (folder)="onSelect($event)"></app-browse-folder>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline"
+        (click)="addFolderModal = false"
+        i18n="@@configuration.add-folder.cancel"
+      >Cancel</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="onAdd()"
+        i18n="@@configuration.add-folder.add"
+      >Add</button>
+    </div>
+  </clr-modal>
+</form>
+
+  <button
+  type="button"
+  class="btn btn-primary"
+  (click)="addFolderModal = true"
+  i18n="@@configuration.add-folder.add-folder"
+>Add a folder</button>
