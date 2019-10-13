@@ -47,3 +47,7 @@ Thumbs.db
 
 yarn.lock
 package-lock.json
+
+# Application configuration files
+config.json
+music-library.json
