@@ -1,0 +1,12 @@
+[
+  {
+    "path": "./assets/sounds/AMBForst_Foret (ID 0100)_LS.mp3",
+    "type": "sound",
+    "tags": ["forêt", "oiseaux"]
+  },
+  {
+    "path": "./assets/sounds/FEETHmn_Pas rapides sur beton (ID 1318)_LS.mp3",
+    "type": "sound",
+    "tags": ["talons", "bruits de pas", "pas rapide"]
+  }
+]

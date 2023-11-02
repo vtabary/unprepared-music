@@ -1,0 +1,23 @@
+<form [formGroup]="form" (submit)="onSearch()">
+  <input
+    type="search"
+    placeholder="Search terms"
+    formControlName="terms"
+    spellcheck="false"
+    autocorrect="off"
+    enterKeyHint="search"
+  />
+  <button type="submit">Search</button>
+</form>
+
+<div *ngIf="list$ | async as results">
+  <ul>
+    <li *ngFor="let result of results">
+      <unprepared-music-sound [url]="result.path"></unprepared-music-sound>
+      {{ result.path }}
+      <ul *ngIf="result.tags.length > 0">
+        <li *ngFor="let tag of result.tags">{{ tag }}</li>
+      </ul>
+    </li>
+  </ul>
+</div>

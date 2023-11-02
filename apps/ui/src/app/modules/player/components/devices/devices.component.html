@@ -1,0 +1,26 @@
+<h2>Devices</h2>
+
+<button (click)="onRefresh()">Refresh</button>
+
+<ng-container *ngIf="devices$ | async as devices">
+  <ul *ngIf="devices.length > 0; else noDevice">
+    <li *ngFor="let device of devices">
+      <span *ngIf="mainId === device.deviceId">[Main]</span>
+      <span *ngIf="testId === device.deviceId">[Test]</span>
+      <span></span>
+      {{ device.label ?? 'Device without label' }}
+      <button (click)="onSelectMainDevice(device.deviceId)">
+        Select as main
+      </button>
+      <button (click)="onSelectTestDevice(device.deviceId)">
+        Select as test
+      </button>
+    </li>
+  </ul>
+
+  <ng-template #noDevice>
+    No device is returned by the application. Either you have no peripherals,
+    you didn't accept the permission to access to the microphone. We need this
+    one to list the peripherals.
+  </ng-template>
+</ng-container>
