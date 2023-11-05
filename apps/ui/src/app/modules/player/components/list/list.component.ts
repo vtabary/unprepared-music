@@ -10,7 +10,7 @@ import {
   startWith,
   takeUntil,
 } from 'rxjs';
-import Fuse, { FuseResult } from 'fuse.js';
+import Fuse from 'fuse.js';
 
 interface ISound {
   path: string;

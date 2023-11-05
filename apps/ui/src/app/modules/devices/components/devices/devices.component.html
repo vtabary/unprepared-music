@@ -1,6 +1,4 @@
-<h2>Devices</h2>
-
-<button (click)="onRefresh()">Refresh</button>
+<unprepared-music-button (click)="onRefresh()">Refresh</unprepared-music-button>
 
 <ng-container *ngIf="devices$ | async as devices">
   <ul *ngIf="devices.length > 0; else noDevice">
@@ -8,13 +6,19 @@
       <span *ngIf="mainId === device.deviceId">[Main]</span>
       <span *ngIf="testId === device.deviceId">[Test]</span>
       <span></span>
-      {{ device.label ?? 'Device without label' }}
-      <button (click)="onSelectMainDevice(device.deviceId)">
+      {{ device.label || 'Device without label' }}
+      <unprepared-music-button
+        (click)="onSelectMainDevice(device.deviceId)"
+        groupOn="right"
+      >
         Select as main
-      </button>
-      <button (click)="onSelectTestDevice(device.deviceId)">
+      </unprepared-music-button>
+      <unprepared-music-button
+        (click)="onSelectTestDevice(device.deviceId)"
+        groupOn="left"
+      >
         Select as test
-      </button>
+      </unprepared-music-button>
     </li>
   </ul>
 

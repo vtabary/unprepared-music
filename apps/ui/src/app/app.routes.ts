@@ -7,6 +7,11 @@ export const appRoutes: Route[] = [
       import('./modules/player/player.module').then((m) => m.PlayerModule),
   },
   {
+    path: 'devices',
+    loadChildren: () =>
+      import('./modules/devices/devices.module').then((m) => m.DevicesModule),
+  },
+  {
     path: '**',
     redirectTo: 'player',
     pathMatch: 'full',

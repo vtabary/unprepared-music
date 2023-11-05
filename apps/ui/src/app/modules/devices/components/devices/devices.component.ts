@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, from } from 'rxjs';
-import { PlayerConfigurationService } from '../../services/player-configuration/player-configuration.service';
+import { Subject } from 'rxjs';
+import { PlayerConfigurationService } from '../../../configuration/services/player-configuration/player-configuration.service';
 
 @Component({
   selector: 'unprepared-music-devices',

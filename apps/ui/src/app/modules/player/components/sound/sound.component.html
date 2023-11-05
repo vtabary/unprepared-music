@@ -2,6 +2,13 @@
   <source [src]="url" />
 </audio>
 
-<button (click)="onPlayMain()">Play as main</button>
-<button (click)="onPlayTest()">Play as test</button>
-<button (click)="onPause()">Pause</button>
+<unprepared-music-button level="primary" groupOn="right" (click)="onPlayMain()"
+  ><fa-icon [icon]="faPlay" class="mr-2"></fa-icon>Play as
+  main</unprepared-music-button
+>
+<unprepared-music-button level="default" groupOn="both" (click)="onPlayTest()"
+  >Play as test</unprepared-music-button
+>
+<unprepared-music-button level="default" groupOn="left" (click)="onPause()"
+  >Pause</unprepared-music-button
+>
