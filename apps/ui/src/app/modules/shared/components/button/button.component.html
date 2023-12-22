@@ -1,0 +1,23 @@
+<button
+  [type]="type"
+  [title]="title"
+  class="font-bold uppercase outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+  [ngClass]="{
+    'group-on-left': groupOn === 'left',
+    'group-on-right': groupOn === 'right',
+    'group-on-both': groupOn === 'both',
+    'no-group': groupOn === 'default',
+    'size-small': size === 'small',
+    'size-medium': size === 'medium',
+    'size-large': size === 'large',
+    'level-default': level === 'default',
+    'level-primary': level === 'primary',
+    'level-secondary': level === 'secondary',
+    'level-text': level === 'text',
+    'display-button': display === 'button',
+    'display-text': display === 'text',
+    'disabled': disabled,
+  }"
+>
+  <ng-content></ng-content>
+</button>

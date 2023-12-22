@@ -1,0 +1,12 @@
+<ul>
+  @for (item of list$ | async; track item.path; let idx = $index) { @if (idx >
+  0) {
+  <li>
+    <span class="block">{{ item.label }}</span>
+    <span class="block text-sm text-gray-300">{{ item.path }}</span>
+    <unprepared-music-button size="small" (click)="onRemove(idx)"
+      ><fa-icon [icon]="faTrash"></fa-icon
+    ></unprepared-music-button>
+  </li>
+  } }
+</ul>

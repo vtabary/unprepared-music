@@ -1,0 +1,23 @@
+<unprepared-music-button
+  level="primary"
+  [disabled]="(isPlaylistEmpty$ | async) ?? true"
+  ><fa-icon [icon]="faPlay"></fa-icon
+></unprepared-music-button>
+<unprepared-music-button
+  level="primary"
+  [disabled]="(isPlaylistEmpty$ | async) ?? true"
+  ><fa-icon [icon]="faPause"></fa-icon
+></unprepared-music-button>
+<unprepared-music-button [disabled]="(isPlaylistEmpty$ | async) ?? true"
+  ><fa-icon [icon]="faRotate"></fa-icon
+></unprepared-music-button>
+<unprepared-music-button [disabled]="(isPlaylistEmpty$ | async) ?? true"
+  ><fa-icon [icon]="faTrash"></fa-icon
+></unprepared-music-button>
+
+@if(currentItem$ | async; as currentItem) {
+<span class="block">{{ currentItem.label }}</span>
+<span class="block text-sm text-gray-300">{{ currentItem.path }}</span>
+} @else {
+<span class="block">No item in the playlist</span>
+}

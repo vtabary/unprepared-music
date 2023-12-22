@@ -1,23 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SharedComponentsModule } from '../shared-components/shared-components.module';
+import { SharedModule } from '../shared/shared.module';
 import { PlayerRoutingModule } from './player-routing.module';
-import { SoundComponent } from './components/sound/sound.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
+import { PlayerComponent } from './components/player/player.component';
 import { MainComponent } from './pages/main/main.component';
-import { ListComponent } from './components/list/list.component';
 
 @NgModule({
-  declarations: [SoundComponent, MainComponent, ListComponent],
-  imports: [
-    CommonModule,
-    PlayerRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    SharedComponentsModule,
-    FontAwesomeModule,
-  ],
+  declarations: [PlaylistComponent, PlayerComponent, MainComponent],
+  imports: [CommonModule, PlayerRoutingModule, SharedModule, FontAwesomeModule],
 })
 export class PlayerModule {}

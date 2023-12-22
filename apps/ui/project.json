@@ -5,6 +5,11 @@
   "prefix": "unprepared-music",
   "sourceRoot": "apps/ui/src",
   "tags": [],
+  "schematics": {
+    "@schematics/angular:component": {
+      "changeDetection": "OnPush"
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

@@ -1,19 +1,49 @@
 import { Route } from '@angular/router';
+import { libraryRequiredGuard } from './guards/library-required/library-required.guard';
 
 export const appRoutes: Route[] = [
   {
-    path: 'player',
-    loadChildren: () =>
-      import('./modules/player/player.module').then((m) => m.PlayerModule),
+    path: '',
+    canActivate: [libraryRequiredGuard],
+    children: [
+      {
+        path: 'library',
+        loadChildren: () =>
+          import('./modules/library/library.module').then(
+            (m) => m.LibraryModule
+          ),
+      },
+      {
+        path: 'devices',
+        loadChildren: () =>
+          import('./modules/devices/devices.module').then(
+            (m) => m.DevicesModule
+          ),
+      },
+      {
+        path: '',
+        outlet: 'sidebar',
+        loadChildren: () =>
+          import('./modules/player/player.module').then((m) => m.PlayerModule),
+      },
+    ],
   },
   {
-    path: 'devices',
+    path: 'projects',
     loadChildren: () =>
-      import('./modules/devices/devices.module').then((m) => m.DevicesModule),
+      import('./modules/projects/projects.module').then(
+        (m) => m.ProjectsModule
+      ),
   },
   {
     path: '**',
-    redirectTo: 'player',
+    redirectTo: 'library',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    outlet: '',
+    redirectTo: 'library',
     pathMatch: 'full',
   },
 ];

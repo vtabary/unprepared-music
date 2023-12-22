@@ -1,0 +1,16 @@
+<tr *ngIf="item" class="my-2 border-b border-gray-200 border-solid">
+  <td class="text-ellipsis whitespace-nowrap">
+    <p>{{ item.label }}</p>
+    <p class="text-sm text-gray-300">{{ item.path }}</p>
+  </td>
+  <td class="whitespace-nowrap">
+    <unprepared-music-chips *ngFor="let tag of item.tags">{{
+      tag
+    }}</unprepared-music-chips>
+  </td>
+  <td class="whitespace-nowrap">
+    <unprepared-music-sound-controls
+      [url]="item.path"
+    ></unprepared-music-sound-controls>
+  </td>
+</tr>

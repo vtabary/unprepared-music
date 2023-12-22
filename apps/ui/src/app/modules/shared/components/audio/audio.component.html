@@ -1,0 +1,3 @@
+<audio #audioObject [preload]="preload">
+  <source *ngFor="let url of urls" [src]="url" />
+</audio>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { PlayerConfigurationService } from '../../../configuration/services/player-configuration/player-configuration.service';
 
@@ -6,6 +6,7 @@ import { PlayerConfigurationService } from '../../../configuration/services/play
   selector: 'unprepared-music-devices',
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DevicesComponent implements OnInit {
   /**

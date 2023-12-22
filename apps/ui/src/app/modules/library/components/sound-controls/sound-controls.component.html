@@ -1,0 +1,34 @@
+<unprepared-music-audio
+  [urls]="url ? [url] : []"
+  [sinkId]="testSinkId"
+  (status)="audioStatus = $event"
+></unprepared-music-audio>
+
+<unprepared-music-button
+  level="secondary"
+  display="text"
+  (click)="onAddPlaylist()"
+  size="small"
+  title="Add to playlist"
+  ><fa-icon [icon]="faPlus"></fa-icon></unprepared-music-button
+><unprepared-music-button
+  *ngIf="audioStatus !== 'PLAYING'; else paused"
+  level="default"
+  display="text"
+  size="small"
+  title="Play for director only"
+  [disabled]="audioStatus === 'ERROR'"
+  (click)="onPlayTest()"
+  ><fa-icon [icon]="faPlay"></fa-icon
+></unprepared-music-button>
+
+<ng-template #paused>
+  <unprepared-music-button
+    level="default"
+    display="text"
+    size="small"
+    title="Pause for director only"
+    (click)="onPause()"
+    ><fa-icon [icon]="faPause"></fa-icon
+  ></unprepared-music-button>
+</ng-template>

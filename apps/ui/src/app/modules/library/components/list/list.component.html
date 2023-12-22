@@ -1,0 +1,55 @@
+<div class="flex flex-col">
+  <div class="flex-none mb-5">
+    <form [formGroup]="form" (submit)="onSearch()" class="flex">
+      <input
+        type="search"
+        placeholder="Search terms"
+        formControlName="terms"
+        spellcheck="false"
+        autocorrect="off"
+        enterKeyHint="search"
+        class="flex-auto"
+      />
+      <unprepared-music-button type="submit" level="primary"
+        >Search</unprepared-music-button
+      >
+    </form>
+  </div>
+  <div class="flex-auto">
+    <ng-container *ngIf="results$ | async as results; else noResult">
+      <table
+        class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+        *ngIf="results.length > 0; else noResult"
+      >
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th
+              scope="col"
+              class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+            >
+              Path
+            </th>
+            <th
+              scope="col"
+              class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+            >
+              Tags
+            </th>
+            <th
+              scope="col"
+              class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+            ></th>
+          </tr>
+        </thead>
+        <tbody>
+          <unprepared-music-sound-card
+            *ngFor="let result of results; first as firstIndex"
+            [item]="result"
+          ></unprepared-music-sound-card>
+        </tbody>
+      </table>
+    </ng-container>
+
+    <ng-template #noResult> No result matching this query </ng-template>
+  </div>
+</div>
