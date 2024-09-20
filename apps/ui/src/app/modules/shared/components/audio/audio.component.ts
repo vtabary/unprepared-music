@@ -17,10 +17,6 @@ import {
   takeUntil,
 } from 'rxjs';
 
-export interface ExperimentalHTMLAudioElement extends HTMLAudioElement {
-  setSinkId?: (id: string) => void;
-}
-
 export enum AudioStatus {
   READY = 'READY',
   PLAYING = 'PLAYING',
@@ -52,7 +48,7 @@ export class AudioComponent implements AfterViewInit, OnDestroy {
   public status = this.status$.asObservable();
 
   @ViewChild('audioObject')
-  public audioObject?: ElementRef<ExperimentalHTMLAudioElement>;
+  public audioObject?: ElementRef<HTMLAudioElement>;
 
   private onDestroy$ = new Subject();
 

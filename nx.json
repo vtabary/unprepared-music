@@ -57,5 +57,6 @@
       "style": "scss"
     }
   },
-  "defaultProject": "desktop"
+  "defaultProject": "desktop",
+  "useInferencePlugins": false
 }
