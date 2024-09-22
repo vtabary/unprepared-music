@@ -3,28 +3,23 @@ import {
   Component,
   Input,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { faPause, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { PlayerConfigurationService } from '../../../configuration/services/player-configuration/player-configuration.service';
-import {
-  AudioComponent,
-  AudioStatus,
-} from '../../../shared/components/audio/audio.component';
 import { PlaylistService } from '../../../shared';
+import { AudioManagerService, AudioStatus } from '../../../shared-player';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'unprepared-music-sound-controls',
   templateUrl: './sound-controls.component.html',
   styleUrls: ['./sound-controls.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AudioManagerService],
 })
 export class SoundControlsComponent implements OnInit {
   @Input()
   public url?: string;
-
-  @ViewChild(AudioComponent, { read: AudioComponent })
-  public audioObject?: AudioComponent;
 
   /**
    * @internal
@@ -45,11 +40,14 @@ export class SoundControlsComponent implements OnInit {
   /**
    * @internal
    */
-  public audioStatus?: AudioStatus;
+  public isPlaying$ = this.audioManager.state.pipe(
+    map((state) => state === AudioStatus.PLAYING)
+  );
 
   constructor(
     private playerConfiguration: PlayerConfigurationService,
-    private playlist: PlaylistService
+    private playlist: PlaylistService,
+    private audioManager: AudioManagerService
   ) {}
 
   /**
@@ -74,21 +72,22 @@ export class SoundControlsComponent implements OnInit {
    * @internal
    */
   public onPlayTest(): void {
-    if (!this.audioObject) {
+    // if (!this.audioObject) {
+    //   return;
+    // }
+
+    // this.audioObject.play();
+
+    if (!this.url) {
       return;
     }
-
-    this.audioObject.play();
+    this.audioManager.play(this.url);
   }
 
   /**
    * @internal
    */
   public onPause(): void {
-    if (!this.audioObject) {
-      return;
-    }
-
-    this.audioObject.pause();
+    this.audioManager.pause();
   }
 }

@@ -1,15 +1,15 @@
-import { BrowserWindow, shell, screen } from 'electron';
-import { rendererAppName, rendererAppPort } from './constants';
-import { environment } from '../environments/environment';
+import { BrowserWindow, screen, shell } from 'electron';
 import { join } from 'path';
 import { format } from 'url';
+import { environment } from '../environments/environment';
+import { rendererAppName, rendererAppPort } from './constants';
 
 export default class App {
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
   static mainWindow: Electron.BrowserWindow;
   static application: Electron.App;
-  static BrowserWindow;
+  static BrowserWindow: typeof BrowserWindow;
 
   public static isDevelopmentMode() {
     const isEnvironmentSet: boolean = 'ELECTRON_IS_DEV' in process.env;
@@ -73,6 +73,7 @@ export default class App {
         backgroundThrottling: false,
         preload: join(__dirname, 'main.preload.js'),
       },
+      // frame: false,
     });
     App.mainWindow.setMenu(null);
     App.mainWindow.center();

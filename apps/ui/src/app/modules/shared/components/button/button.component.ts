@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Output,
+} from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'unprepared-music-button',
@@ -27,4 +33,18 @@ export class ButtonComponent {
 
   @Input()
   public disabled = false;
+
+  private _clickButton = new Subject<void>();
+
+  @Output()
+  public get clickButton(): Observable<void> {
+    return this._clickButton.asObservable();
+  }
+
+  /**
+   * @internal
+   */
+  public onClickButton(): void {
+    this._clickButton.next(undefined);
+  }
 }

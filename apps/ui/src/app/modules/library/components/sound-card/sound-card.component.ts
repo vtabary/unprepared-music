@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ISound } from '../../../shared';
+import { ISound } from '@local/shared-interfaces';
 
 @Component({
   selector: 'unprepared-music-sound-card',

@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { ISound } from '../../models/sound';
+import { ISound } from '@local/shared-interfaces';
 import { LibraryService } from '../library/library.service';
 
 @Injectable({

@@ -1,0 +1,29 @@
+<div class="flex flex-col">
+  <form [formGroup]="form" (submit)="onAdd()" class="form">
+    <label>
+      <span>Select a music file</span>
+      <unprepared-music-file-input
+        formControlName="file"
+      ></unprepared-music-file-input>
+    </label>
+
+    <label>
+      <span>Music name (optional)</span>
+      <input type="text" formControlName="label" />
+    </label>
+
+    <label>
+      <span>Tags, separated by a comma "," (optional)</span>
+      <input type="text" formControlName="tags" />
+    </label>
+
+    <unprepared-music-link url="/library">Cancel</unprepared-music-link>
+
+    <unprepared-music-button
+      type="submit"
+      [disabled]="form.invalid"
+      level="primary"
+      >Save</unprepared-music-button
+    >
+  </form>
+</div>

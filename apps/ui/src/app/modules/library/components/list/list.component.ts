@@ -6,6 +6,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ISound } from '@local/shared-interfaces';
+import Fuse from 'fuse.js';
 import {
   Observable,
   Subject,
@@ -14,8 +16,7 @@ import {
   startWith,
   takeUntil,
 } from 'rxjs';
-import Fuse from 'fuse.js';
-import { ISound, LibraryService } from '../../../shared';
+import { LibraryService } from '../../../shared';
 
 @Component({
   selector: 'unprepared-music-list',

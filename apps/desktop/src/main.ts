@@ -1,8 +1,10 @@
-import SquirrelEvents from './app/events/squirrel.events';
-import ElectronEvents from './app/events/electron.events';
-import UpdateEvents from './app/events/update.events';
 import { app, BrowserWindow } from 'electron';
 import App from './app/app';
+import ElectronEvents from './app/events/electron.events';
+import SquirrelEvents from './app/events/squirrel.events';
+import { importAudioHooks } from './library/audio';
+import { importFileHooks } from './library/file';
+import { importLibraryHooks } from './library/library';
 
 export default class Main {
   static initialize() {
@@ -14,6 +16,12 @@ export default class Main {
 
   static bootstrapApp() {
     App.main(app, BrowserWindow);
+
+    App.application.whenReady().then(() => {
+      importLibraryHooks();
+      importAudioHooks();
+      importFileHooks();
+    });
   }
 
   static bootstrapAppEvents() {

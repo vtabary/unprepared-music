@@ -1,10 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ButtonComponent } from './components/button/button.component';
 import { ChipsComponent } from './components/chips/chips.component';
-import { AudioComponent } from './components/audio/audio.component';
+import { FileInputComponent } from './components/file-input/file-input.component';
+import { LinkComponent } from './components/link/link.component';
 
-@NgModule({ declarations: [ButtonComponent, ChipsComponent, AudioComponent],
-    exports: [ButtonComponent, ChipsComponent, AudioComponent], imports: [CommonModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+  declarations: [
+    ButtonComponent,
+    ChipsComponent,
+    LinkComponent,
+    FileInputComponent,
+  ],
+  imports: [CommonModule, HttpClientModule, RouterModule],
+  exports: [ButtonComponent, ChipsComponent, LinkComponent, FileInputComponent],
+})
 export class SharedModule {}

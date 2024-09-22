@@ -1,3 +1,3 @@
-export { PlaylistService } from './services/playlist/playlist.service';
+export { AudioService } from './services/audio/audio.service';
 export { LibraryService } from './services/library/library.service';
-export { ISound } from './models/sound';
+export { PlaylistService } from './services/playlist/playlist.service';

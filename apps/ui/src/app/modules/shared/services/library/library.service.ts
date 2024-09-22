@@ -1,7 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { ISound } from '../../models/sound';
+import { ILibraryFunctions, ISound } from '@local/shared-interfaces';
+import { from, mapTo, Observable, switchMap, tap } from 'rxjs';
+
+declare global {
+  interface Window {
+    library: ILibraryFunctions;
+  }
+}
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +20,6 @@ export class LibraryService {
   private registry: Record<string, ISound> = {};
   private loaded = false;
 
-  constructor(private http: HttpClient) {}
-
   public isLoaded(): boolean {
     return this.loaded;
   }
@@ -25,7 +28,7 @@ export class LibraryService {
    * Load items from a JSON file
    */
   public load(): Observable<ISound[]> {
-    return this.http.get<ISound[]>('./assets/sounds/list.json').pipe(
+    return from(window.library.list()).pipe(
       tap((items) => {
         this.registry = Object.fromEntries(
           items.map((item) => [item.path, item])
@@ -41,6 +44,27 @@ export class LibraryService {
    */
   public list(): ISound[] {
     return Object.values(this.registry);
+  }
+
+  /**
+   * Returns the items actually loaded
+   */
+  public add(
+    item: Pick<ISound, 'path' | 'type'> &
+      Partial<Pick<ISound, 'label' | 'tags'>>
+  ): Observable<ISound> {
+    return from(window.library.add(item)).pipe(
+      switchMap((result) => this.load().pipe(mapTo(result)))
+    );
+  }
+
+  /**
+   * Returns the items actually loaded
+   */
+  public remove(item: ISound): Observable<void> {
+    return from(window.library.remove(item.path)).pipe(
+      switchMap((result) => this.load().pipe(mapTo(result)))
+    );
   }
 
   /**
