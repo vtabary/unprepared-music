@@ -22,6 +22,7 @@ npx nx serve desktop
 - Set a song as starred
 - Project management (scoped library, scoped starred music, ...)
 - Music session management
+- Display audio file thumbnail
 - Remote link support
 - Spotify support
 - Log all music played in a session

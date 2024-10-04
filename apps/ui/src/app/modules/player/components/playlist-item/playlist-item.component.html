@@ -1,0 +1,17 @@
+@if (item) {
+<div class="ui-playlist-item flex flex-row">
+  <div class="flex-grow w-full">
+    <span class="block text-ellipsis whitespace-nowrap overflow-hidden">{{
+      item.label
+    }}</span>
+    <span class="block text-sm text-gray-300">{{
+      item.duration | duration
+    }}</span>
+  </div>
+  <div class="ui-actions flex-grow-0">
+    <unprepared-music-button size="small" (click)="onRemove()"
+      ><fa-icon [icon]="faTrash"></fa-icon
+    ></unprepared-music-button>
+  </div>
+</div>
+}

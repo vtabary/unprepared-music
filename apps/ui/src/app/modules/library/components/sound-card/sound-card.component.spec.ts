@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SoundCardComponent } from './SoundCard.component';
+import { provideRouter } from '@angular/router';
+import { SoundCardComponent } from './sound-card.component';
 
 describe('SoundCardComponent', () => {
   let component: SoundCardComponent;
@@ -8,6 +9,7 @@ describe('SoundCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SoundCardComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SoundCardComponent);

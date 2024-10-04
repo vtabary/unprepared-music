@@ -1,7 +1,7 @@
 <a
   [routerLink]="url"
   [title]="title"
-  class="font-bold uppercase outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+  class="font-bold uppercase outline-none focus:outline-none ease-linear transition-all duration-150"
   [ngClass]="{
     'group-on-left': groupOn === 'left',
     'group-on-right': groupOn === 'right',
@@ -18,6 +18,5 @@
     'display-text': display === 'text',
     'disabled': disabled,
   }"
->
-  <ng-content></ng-content>
-</a>
+  ><ng-content></ng-content
+></a>

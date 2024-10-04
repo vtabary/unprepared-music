@@ -6,3 +6,9 @@ globalThis.ngJest = {
   },
 };
 import 'jest-preset-angular/setup-jest';
+
+class AudioContext {}
+
+Object.defineProperty(global, 'AudioContext', {
+  value: AudioContext,
+});

@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Output } from '@angular/core';
 import {
   faPause,
   faPlay,
   faRotate,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { PlaylistService } from '../../../shared';
 import { map, startWith } from 'rxjs';
+import { PlaylistService } from '../../../shared';
 
 @Component({
   selector: 'unprepared-music-player',
@@ -31,9 +31,8 @@ export class PlayerComponent {
    * @internal
    */
   public faTrash = faTrash;
-  /**
-   * @internal
-   */
+
+  @Output()
   public currentItem$ = this.playlist.change.pipe(
     startWith(this.playlist.list()),
     map((list) => list[0])

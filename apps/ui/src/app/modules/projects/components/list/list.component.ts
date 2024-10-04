@@ -3,8 +3,9 @@ import {
   ChangeDetectionStrategy,
   Component,
 } from '@angular/core';
-import { LibraryService } from '../../../shared';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { LibraryService } from '../../../shared';
 
 @Component({
   selector: 'unprepared-music-list',
@@ -13,15 +14,23 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent implements AfterViewInit {
+  private onDestroy$ = new Subject<void>();
+
   constructor(private library: LibraryService, private router: Router) {}
 
   public ngAfterViewInit(): void {
     this.onLoadProject();
   }
 
+  /**
+   * @internal
+   */
   public onLoadProject() {
-    this.library.load().subscribe(() => {
-      this.router.navigateByUrl('/library');
-    });
+    this.library
+      .load()
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(() => {
+        this.router.navigateByUrl('/library');
+      });
   }
 }

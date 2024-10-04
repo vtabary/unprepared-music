@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LibraryService } from './library.service';
+import { FileService } from './file.service';
 
-describe('LibraryService', () => {
-  let service: LibraryService;
+describe('FileService', () => {
+  let service: FileService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LibraryService);
+    service = TestBed.inject(FileService);
   });
 
   it('should be created', () => {

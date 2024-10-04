@@ -1,0 +1,13 @@
+:host {
+  display: contents;
+}
+
+.ui-playlist-item {
+  &:hover .ui-actions {
+    @apply block;
+  }
+}
+
+.ui-actions {
+  @apply hidden;
+}

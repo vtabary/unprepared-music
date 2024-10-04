@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { startWith } from 'rxjs';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { startWith } from 'rxjs';
 import { PlaylistService } from '../../../shared';
 
 @Component({

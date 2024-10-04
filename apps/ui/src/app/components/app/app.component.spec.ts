@@ -1,26 +1,25 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter, RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MainMenuComponent } from '../main-menu/main-menu.component';
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent, NxWelcomeComponent],
+      imports: [FontAwesomeModule, RouterModule],
+      declarations: [AppComponent, MainMenuComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
-  });
 
-  it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Welcome ui');
   });
 
-  it(`should have as title 'ui'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('ui');
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });

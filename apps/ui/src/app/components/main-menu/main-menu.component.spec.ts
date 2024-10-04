@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainMenuComponent } from './main-menu.component';
 
 describe('MainMenuComponent', () => {
@@ -8,7 +8,8 @@ describe('MainMenuComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MainMenuComponent]
+      declarations: [MainMenuComponent],
+      imports: [FontAwesomeModule],
     });
     fixture = TestBed.createComponent(MainMenuComponent);
     component = fixture.componentInstance;

@@ -1,16 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListComponent } from './list.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideRouter } from '@angular/router';
+import { SharedModule } from '../../../shared/shared.module';
+import { AddLibraryComponent } from './add.component';
 
-describe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
+describe('AddLibraryComponent', () => {
+  let component: AddLibraryComponent;
+  let fixture: ComponentFixture<AddLibraryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ListComponent],
+      declarations: [AddLibraryComponent],
+      imports: [SharedModule, ReactiveFormsModule],
+      providers: [provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ListComponent);
+    fixture = TestBed.createComponent(AddLibraryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,14 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
-import { PlayerRoutingModule } from './player-routing.module';
-import { PlaylistComponent } from './components/playlist/playlist.component';
 import { PlayerComponent } from './components/player/player.component';
+import { PlaylistItemComponent } from './components/playlist-item/playlist-item.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
 import { MainComponent } from './pages/main/main.component';
+import { PlayerRoutingModule } from './player-routing.module';
 
 @NgModule({
-  declarations: [PlaylistComponent, PlayerComponent, MainComponent],
+  declarations: [
+    PlaylistComponent,
+    PlayerComponent,
+    MainComponent,
+    PlaylistItemComponent,
+  ],
   imports: [CommonModule, PlayerRoutingModule, SharedModule, FontAwesomeModule],
 })
 export class PlayerModule {}
