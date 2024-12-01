@@ -1,13 +1,17 @@
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { startWith } from 'rxjs';
-import { PlaylistService } from '../../../shared';
+import { PlaylistService } from '../../../shared/index';
+import { PlaylistItemComponent } from '../playlist-item/playlist-item.component';
 
 @Component({
   selector: 'unprepared-music-playlist',
   templateUrl: './playlist.component.html',
   styleUrls: ['./playlist.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PlaylistItemComponent, AsyncPipe],
 })
 export class PlaylistComponent {
   /**

@@ -9,14 +9,16 @@ import { LinkComponent } from './components/link/link.component';
 import { DurationPipe } from './pipes/duration/duration.pipe';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    RouterModule,
     ButtonComponent,
     ChipsComponent,
     LinkComponent,
     FileInputComponent,
     DurationPipe,
   ],
-  imports: [CommonModule, HttpClientModule, RouterModule],
   exports: [
     ButtonComponent,
     ChipsComponent,

@@ -9,12 +9,15 @@ import { MainComponent } from './pages/main/main.component';
 import { PlayerRoutingModule } from './player-routing.module';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
+    PlayerRoutingModule,
+    SharedModule,
+    FontAwesomeModule,
     PlaylistComponent,
     PlayerComponent,
     MainComponent,
     PlaylistItemComponent,
   ],
-  imports: [CommonModule, PlayerRoutingModule, SharedModule, FontAwesomeModule],
 })
 export class PlayerModule {}

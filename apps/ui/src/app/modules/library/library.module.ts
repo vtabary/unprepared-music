@@ -12,13 +12,6 @@ import { AddLibraryComponent } from './pages/add/add.component';
 import { MainComponent } from './pages/main/main.component';
 
 @NgModule({
-  declarations: [
-    SoundControlsComponent,
-    MainComponent,
-    ListComponent,
-    SoundCardComponent,
-    AddLibraryComponent,
-  ],
   imports: [
     CommonModule,
     LibraryRoutingModule,
@@ -26,6 +19,11 @@ import { MainComponent } from './pages/main/main.component';
     SharedModule,
     SharedPlayerModule,
     FontAwesomeModule,
+    SoundControlsComponent,
+    MainComponent,
+    ListComponent,
+    SoundCardComponent,
+    AddLibraryComponent,
   ],
 })
 export class LibraryModule {}

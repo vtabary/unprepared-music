@@ -1,14 +1,16 @@
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
   OnInit,
 } from '@angular/core';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faPause, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { PlayerConfigurationService } from '../../../configuration/services/player-configuration/player-configuration.service';
-import { PlaylistService } from '../../../shared';
-import { AudioManagerService, AudioStatus } from '../../../shared-player';
 import { map } from 'rxjs';
+import { PlayerConfigurationService } from '../../../configuration/index';
+import { AudioManagerService, AudioStatus } from '../../../shared-player/index';
+import { ButtonComponent, PlaylistService } from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-sound-controls',
@@ -16,6 +18,8 @@ import { map } from 'rxjs';
   styleUrls: ['./sound-controls.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AudioManagerService],
+  standalone: true,
+  imports: [ButtonComponent, FaIconComponent, AsyncPipe],
 })
 export class SoundControlsComponent implements OnInit {
   @Input()

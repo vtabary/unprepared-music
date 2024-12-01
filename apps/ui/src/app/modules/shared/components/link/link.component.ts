@@ -1,9 +1,11 @@
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
   Output,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
@@ -11,6 +13,8 @@ import { Observable, Subject } from 'rxjs';
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [RouterLink, NgClass],
 })
 export class LinkComponent {
   @Input()

@@ -1,12 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListComponent } from './pages/list/list.component';
-import { DevicesComponent } from './components/devices/devices.component';
+import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import { DevicesComponent } from './components/devices/devices.component';
 import { DevicesRoutingModule } from './devices-routing.module';
+import { ListComponent } from './pages/list/list.component';
 
 @NgModule({
-  declarations: [ListComponent, DevicesComponent],
-  imports: [CommonModule, DevicesRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    DevicesRoutingModule,
+    SharedModule,
+    ListComponent,
+    DevicesComponent,
+  ],
 })
 export class DevicesModule {}

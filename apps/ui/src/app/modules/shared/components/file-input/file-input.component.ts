@@ -7,6 +7,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { first } from 'rxjs';
 import { FileService } from '../../services/file/file.service';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'unprepared-music-file-input',
@@ -20,6 +21,8 @@ import { FileService } from '../../services/file/file.service';
       useExisting: forwardRef(() => FileInputComponent),
     },
   ],
+  standalone: true,
+  imports: [ButtonComponent],
 })
 export class FileInputComponent implements ControlValueAccessor {
   @Input()

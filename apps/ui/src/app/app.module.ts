@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { AppComponent } from './components/app/app.component';
-import { appRoutes } from './app.routes';
-import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SharedModule } from './modules/shared/shared.module';
+import { appRoutes } from './app.routes';
+import { AppComponent } from './components/app/app.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { SharedModule } from './modules/shared/index';
 
 @NgModule({
-  declarations: [AppComponent, MainMenuComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, {
@@ -17,6 +17,7 @@ import { SharedModule } from './modules/shared/shared.module';
     }),
     FontAwesomeModule,
     SharedModule,
+    MainMenuComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

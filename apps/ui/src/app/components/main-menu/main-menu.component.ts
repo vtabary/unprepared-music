@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {
   faBoxesPacking,
   faHeadphones,
@@ -10,6 +12,8 @@ import {
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [RouterLink, FaIconComponent],
 })
 export class MainMenuComponent {
   /**

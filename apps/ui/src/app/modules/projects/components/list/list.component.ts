@@ -5,13 +5,15 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { LibraryService } from '../../../shared';
+import { ButtonComponent, LibraryService } from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ButtonComponent],
 })
 export class ListComponent implements AfterViewInit {
   private onDestroy$ = new Subject<void>();

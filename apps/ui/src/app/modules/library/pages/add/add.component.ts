@@ -4,16 +4,33 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { first, of, Subject, switchMap, takeUntil } from 'rxjs';
 import { AudioService, LibraryService } from '../../../shared';
+import {
+  ButtonComponent,
+  FileInputComponent,
+  LinkComponent,
+} from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-add-library',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FileInputComponent,
+    LinkComponent,
+    ButtonComponent,
+  ],
 })
 export class AddLibraryComponent implements OnInit, OnDestroy {
   /**
@@ -26,7 +43,6 @@ export class AddLibraryComponent implements OnInit, OnDestroy {
   });
 
   private onDestroy$ = new Subject<void>();
-  private currentDuration = -1;
 
   constructor(
     private library: LibraryService,
@@ -51,8 +67,6 @@ export class AddLibraryComponent implements OnInit, OnDestroy {
           label: value?.label,
           tags: value?.tags.join(', '),
         });
-        this.currentDuration =
-          value?.duration === undefined ? -1 : value?.duration;
       });
   }
 

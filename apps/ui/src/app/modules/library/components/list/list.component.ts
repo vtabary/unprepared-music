@@ -1,3 +1,4 @@
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,7 +6,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ISound } from '@local/shared-interfaces';
 import Fuse from 'fuse.js';
 import {
@@ -17,12 +18,24 @@ import {
   takeUntil,
 } from 'rxjs';
 import { LibraryService } from '../../../shared';
+import { ButtonComponent, LinkComponent } from '../../../shared/index';
+import { SoundCardComponent } from '../sound-card/sound-card.component';
 
 @Component({
   selector: 'unprepared-music-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    ButtonComponent,
+    LinkComponent,
+    NgIf,
+    NgFor,
+    SoundCardComponent,
+    AsyncPipe,
+  ],
 })
 export class ListComponent implements OnInit, OnDestroy {
   /**
