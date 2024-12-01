@@ -2,7 +2,6 @@ import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  HostListener,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -32,8 +31,8 @@ import { SoundCardComponent } from '../sound-card/sound-card.component';
     ButtonComponent,
     LinkComponent,
     SoundCardComponent,
-    AsyncPipe
-],
+    AsyncPipe,
+  ],
 })
 export class ListComponent implements OnInit, OnDestroy {
   /**
@@ -93,10 +92,4 @@ export class ListComponent implements OnInit, OnDestroy {
   public onSearch(): void {
     this.onSearch$.next(this.form.value.terms ?? '');
   }
-
-  /**
-   * @internal
-   */
-  @HostListener('window:')
-  public onQueryFill(): void {}
 }

@@ -33,20 +33,29 @@ export class FileInputComponent implements ControlValueAccessor {
    */
   public disabled = false;
 
-  private onChange = (value: string) => {};
-  private onTouched = (value: string) => {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private onChange = (_: string) => {
+    // Method will be replaced by Angular
+  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private onTouched = (_: string) => {
+    // Method will be replaced by Angular
+  };
 
   constructor(private file: FileService) {}
 
-  public registerOnChange(fn: any): void {
+  public registerOnChange(fn: (_: string) => void): void {
     this.onChange = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: (_: string) => void): void {
     this.onTouched = fn;
   }
 
-  public writeValue(path: string): void {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public writeValue(_: string): void {
+    // Browser does not allow to set value of file input
+  }
 
   /**
    * @internal
