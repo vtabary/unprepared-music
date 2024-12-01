@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -31,11 +31,9 @@ import { SoundCardComponent } from '../sound-card/sound-card.component';
     ReactiveFormsModule,
     ButtonComponent,
     LinkComponent,
-    NgIf,
-    NgFor,
     SoundCardComponent,
-    AsyncPipe,
-  ],
+    AsyncPipe
+],
 })
 export class ListComponent implements OnInit, OnDestroy {
   /**

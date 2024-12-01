@@ -1,12 +1,13 @@
-<tr *ngIf="item" class="my-2 border-b border-gray-200 border-solid">
+@if (item) {
+<tr class="my-2 border-b border-gray-200 border-solid">
   <td class="text-ellipsis whitespace-nowrap">
     <p>{{ item.label }}</p>
     <p class="text-sm text-gray-300">{{ item.path }}</p>
   </td>
   <td class="whitespace-nowrap">
-    <unprepared-music-chips *ngFor="let tag of item.tags">{{
-      tag
-    }}</unprepared-music-chips>
+    @for (tag of item.tags; track tag) {
+    <unprepared-music-chips>{{ tag }}</unprepared-music-chips>
+    }
   </td>
   <td class="whitespace-nowrap">
     <unprepared-music-sound-controls
@@ -14,3 +15,4 @@
     ></unprepared-music-sound-controls>
   </td>
 </tr>
+}

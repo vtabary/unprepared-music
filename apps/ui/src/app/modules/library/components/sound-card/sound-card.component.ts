@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ISound } from '@local/shared-interfaces';
 import { ChipsComponent } from '../../../shared/index';
@@ -10,7 +10,7 @@ import { SoundControlsComponent } from '../sound-controls/sound-controls.compone
   styleUrls: ['./sound-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, NgFor, ChipsComponent, SoundControlsComponent],
+  imports: [ChipsComponent, SoundControlsComponent],
 })
 export class SoundCardComponent {
   @Input()
