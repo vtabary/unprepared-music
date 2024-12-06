@@ -12,12 +12,12 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/ui",
         "index": "apps/ui/src/index.html",
-        "main": "apps/ui/src/main.ts",
+        "browser": "apps/ui/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/ui/tsconfig.app.json",
         "assets": ["apps/ui/src/favicon.ico", "apps/ui/src/assets"],
@@ -57,9 +57,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
