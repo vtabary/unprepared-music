@@ -17,4 +17,8 @@ describe('DurationPipe', () => {
   it('should return a duration with hours', () => {
     expect(new DurationPipe().transform(7356)).toEqual('02:02:36.00');
   });
+
+  it('should return a duration with hundeth of a seconde', () => {
+    expect(new DurationPipe().transform(7356.56)).toEqual('02:02:36.56');
+  });
 });

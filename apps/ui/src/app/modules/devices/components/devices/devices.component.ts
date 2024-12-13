@@ -1,8 +1,8 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ButtonComponent } from '@local/ui-components';
 import { Subject } from 'rxjs';
 import { PlayerConfigurationService } from '../../../configuration/index';
-import { ButtonComponent } from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-devices',

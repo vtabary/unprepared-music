@@ -7,10 +7,11 @@ import {
 } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faPause, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { ButtonComponent } from '@local/ui-components';
 import { map } from 'rxjs';
 import { PlayerConfigurationService } from '../../../configuration/index';
 import { AudioManagerService, AudioStatus } from '../../../shared-player/index';
-import { ButtonComponent, PlaylistService } from '../../../shared/index';
+import { PlaylistService } from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-sound-controls',

@@ -11,13 +11,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first, of, Subject, switchMap, takeUntil } from 'rxjs';
-import { AudioService, LibraryService } from '../../../shared';
 import {
   ButtonComponent,
   FileInputComponent,
   LinkComponent,
-} from '../../../shared/index';
+} from '@local/ui-components';
+import { first, of, Subject, switchMap, takeUntil } from 'rxjs';
+import { AudioService, LibraryService } from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-add-library',

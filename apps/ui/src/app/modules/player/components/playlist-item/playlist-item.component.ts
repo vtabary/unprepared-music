@@ -7,8 +7,8 @@ import {
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faPlay, faRotate, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ISound } from '@local/shared-interfaces';
+import { ButtonComponent, DurationPipe } from '@local/ui-components';
 import { Observable, Subject } from 'rxjs';
-import { ButtonComponent, DurationPipe } from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-playlist-item',

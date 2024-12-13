@@ -7,8 +7,9 @@ import {
   faRotate,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
+import { ButtonComponent } from '@local/ui-components';
 import { map, startWith } from 'rxjs';
-import { ButtonComponent, PlaylistService } from '../../../shared/index';
+import { PlaylistService } from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-player',

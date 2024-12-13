@@ -8,7 +8,7 @@ import {
 import { Observable, Subject } from 'rxjs';
 
 @Component({
-  selector: 'unprepared-music-button',
+  selector: 'unprepared-components-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

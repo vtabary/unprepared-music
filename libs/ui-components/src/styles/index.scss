@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Button groups
+ */
+.group-on-left {
+  @apply rounded-r mr-1 border-l-0;
+}
+
+.group-on-right {
+  @apply rounded-l border-r-0;
+}
+
+.group-on-both {
+  @apply border-x-0;
+}
+
+.no-group {
+  @apply rounded mr-1 p-1;
+}
+
+/**
+ * Sizes
+ */
+.size-small {
+  @apply text-xs px-4 py-2;
+}
+
+.size-medium {
+  @apply text-sm px-6 py-3;
+}
+
+.size-large {
+  @apply px-8 py-3;
+}
+
+/**
+ * States
+ */
+.disabled {
+  @apply text-gray-400 bg-transparent border border-solid border-white hover:text-gray-400 active:text-gray-400;
+}
+
+/**
+ * Levels
+ */
+.level-default {
+  @apply text-gray-500 bg-white border border-solid border-gray-500 hover:bg-gray-500 hover:text-white active:bg-gray-600;
+}
+
+.level-primary:not(.disabled) {
+  @apply text-white bg-pink-500 active:bg-pink-600 border border-solid border-pink-500 hover:bg-pink-400 active:bg-pink-600;
+}
+
+.level-secondary {
+  @apply bg-transparent border border-solid;
+}
+
+.level-secondary:not(.disabled) {
+  @apply text-pink-500 border-pink-500 hover:bg-pink-400 hover:text-white active:bg-pink-600;
+}
+
+/**
+ * Display as
+ */
+.display-button {
+  @apply shadow;
+}
+
+.display-button:not(.disabled) {
+  @apply hover:shadow-md;
+}
+
+.display-text {
+  @apply border border-solid border-transparent shadow-none bg-transparent cursor-default;
+}

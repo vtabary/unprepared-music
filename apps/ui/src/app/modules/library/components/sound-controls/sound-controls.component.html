@@ -1,25 +1,25 @@
-@if ((isPlaying$ | async) === false) {<unprepared-music-button
+@if ((isPlaying$ | async) === false) {<unprepared-components-button
   level="default"
   display="text"
   size="small"
   title="Play for director only"
   (click)="onPlayTest()"
-  ><fa-icon [icon]="faPlay"></fa-icon></unprepared-music-button
+  ><fa-icon [icon]="faPlay"></fa-icon></unprepared-components-button
 >} @else {
-<unprepared-music-button
+<unprepared-components-button
   level="default"
   display="text"
   size="small"
   title="Pause for director only"
   (click)="onPause()"
   ><fa-icon [icon]="faPause"></fa-icon
-></unprepared-music-button>
+></unprepared-components-button>
 }
-<unprepared-music-button
+<unprepared-components-button
   level="secondary"
   display="text"
   (click)="onAddPlaylist()"
   size="small"
   title="Add to playlist"
   ><fa-icon [icon]="faPlus"></fa-icon
-></unprepared-music-button>
+></unprepared-components-button>

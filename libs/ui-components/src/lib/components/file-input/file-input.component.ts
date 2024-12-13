@@ -3,6 +3,7 @@ import {
   Component,
   forwardRef,
   Input,
+  ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { first } from 'rxjs';
@@ -10,7 +11,7 @@ import { FileService } from '../../services/file/file.service';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
-  selector: 'unprepared-music-file-input',
+  selector: 'unprepared-components-file-input',
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,6 +28,9 @@ import { ButtonComponent } from '../button/button.component';
 export class FileInputComponent implements ControlValueAccessor {
   @Input()
   public accept = 'audio/*';
+
+  @ViewChild('fileInput', { read: HTMLInputElement })
+  public fileInput!: HTMLInputElement;
 
   /**
    * @internal
@@ -61,6 +65,8 @@ export class FileInputComponent implements ControlValueAccessor {
    * @internal
    */
   public onSelect(): void {
+    // We have to use the window.file API (custom electron API)
+    // since Electron does not allow to set full path in a file input
     this.file
       .open('')
       .pipe(first())

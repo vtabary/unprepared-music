@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { JsonPipe, NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,12 +9,12 @@ import { RouterLink } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
-  selector: 'unprepared-music-link',
+  selector: 'unprepared-components-link',
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, NgClass],
+  imports: [RouterLink, NgClass, JsonPipe],
 })
 export class LinkComponent {
   @Input()

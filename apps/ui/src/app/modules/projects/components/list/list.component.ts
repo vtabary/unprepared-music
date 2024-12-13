@@ -4,8 +4,9 @@ import {
   Component,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { ButtonComponent } from '@local/ui-components';
 import { Subject, takeUntil } from 'rxjs';
-import { ButtonComponent, LibraryService } from '../../../shared/index';
+import { LibraryService } from '../../../shared/index';
 
 @Component({
   selector: 'unprepared-music-list',

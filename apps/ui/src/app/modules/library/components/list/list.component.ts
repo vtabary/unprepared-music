@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ISound } from '@local/shared-interfaces';
+import { ButtonComponent, LinkComponent } from '@local/ui-components';
 import Fuse from 'fuse.js';
 import {
   Observable,
@@ -16,8 +17,7 @@ import {
   startWith,
   takeUntil,
 } from 'rxjs';
-import { LibraryService } from '../../../shared';
-import { ButtonComponent, LinkComponent } from '../../../shared/index';
+import { LibraryService } from '../../../shared/index';
 import { SoundCardComponent } from '../sound-card/sound-card.component';
 
 @Component({

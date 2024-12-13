@@ -1,4 +1,6 @@
-<unprepared-music-button (click)="onRefresh()">Refresh</unprepared-music-button>
+<unprepared-components-button (click)="onRefresh()"
+  >Refresh</unprepared-components-button
+>
 
 @if (devices$ | async; as devices) { @if (devices.length > 0) {
 <ul>
@@ -10,15 +12,15 @@
     <span>[Test]</span>
     }
     <span>{{ device.label || 'Device without label' }}</span>
-    <unprepared-music-button
+    <unprepared-components-button
       (click)="onSelectMainDevice(device.deviceId)"
       groupOn="right"
-      >Select as main</unprepared-music-button
+      >Select as main</unprepared-components-button
     >
-    <unprepared-music-button
+    <unprepared-components-button
       (click)="onSelectTestDevice(device.deviceId)"
       groupOn="left"
-      >Select as test</unprepared-music-button
+      >Select as test</unprepared-components-button
     >
   </li>
   }

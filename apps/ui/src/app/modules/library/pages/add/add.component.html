@@ -17,13 +17,15 @@
       <input type="text" formControlName="tags" />
     </label>
 
-    <unprepared-music-link url="/library">Cancel</unprepared-music-link>
+    <unprepared-components-link url="/library"
+      >Cancel</unprepared-components-link
+    >
 
-    <unprepared-music-button
+    <unprepared-components-button
       type="submit"
       [disabled]="form.invalid"
       level="primary"
-      >Save</unprepared-music-button
+      >Save</unprepared-components-button
     >
   </form>
 </div>
