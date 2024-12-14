@@ -16,8 +16,8 @@ const meta: Meta<ChipsComponent> = {
     ...ActionsData,
   },
   render: (args: any) => ({
-    template: `<unprepared-components-chips
-    >${args.text}</unprepared-components-chips>`,
+    template: `<uc-chips
+    >${args.text}</uc-chips>`,
   }),
 };
 

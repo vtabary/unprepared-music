@@ -1,4 +1,8 @@
-<div class="border-b border-solid border-gray-200">
-  <unprepared-music-player></unprepared-music-player>
-</div>
-<unprepared-music-playlist></unprepared-music-playlist>
+<uc-layout-column [grow]="32">
+  <h1 class="uc-header-1" ucColumnHeader>Player</h1>
+  <ng-container ucColumnContent>
+    <unprepared-music-player></unprepared-music-player>
+    <div class="uc-layout-vertical-separator"></div>
+    <unprepared-music-playlist></unprepared-music-playlist>
+  </ng-container>
+</uc-layout-column>

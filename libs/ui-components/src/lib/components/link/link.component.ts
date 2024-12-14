@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
-  selector: 'unprepared-components-link',
+  selector: 'uc-link',
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

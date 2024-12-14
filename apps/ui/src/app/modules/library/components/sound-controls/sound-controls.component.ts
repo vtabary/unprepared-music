@@ -5,9 +5,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faPause, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { ButtonComponent } from '@local/ui-components';
+import { ButtonComponent, IconComponent } from '@local/ui-components';
 import { map } from 'rxjs';
 import { PlayerConfigurationService } from '../../../configuration/index';
 import { AudioManagerService, AudioStatus } from '../../../shared-player/index';
@@ -20,24 +18,12 @@ import { PlaylistService } from '../../../shared/index';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AudioManagerService],
   standalone: true,
-  imports: [ButtonComponent, FaIconComponent, AsyncPipe],
+  imports: [ButtonComponent, IconComponent, AsyncPipe],
 })
 export class SoundControlsComponent implements OnInit {
   @Input()
   public url?: string;
 
-  /**
-   * @internal
-   */
-  public faPlay = faPlay;
-  /**
-   * @internal
-   */
-  public faPause = faPause;
-  /**
-   * @internal
-   */
-  public faPlus = faPlus;
   /**
    * @internal
    */

@@ -5,13 +5,13 @@
       item.label
     }}</span>
     <span class="block text-sm text-gray-300">{{
-      item.duration | duration
+      item.duration | ucDuration
     }}</span>
   </div>
   <div class="ui-actions flex-grow-0">
-    <unprepared-components-button size="small" (click)="onRemove()"
-      ><fa-icon [icon]="faTrash"></fa-icon
-    ></unprepared-components-button>
+    <uc-button size="small" (click)="onRemove()"
+      ><uc-icon name="trash"></uc-icon
+    ></uc-button>
   </div>
 </div>
 }

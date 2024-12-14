@@ -11,7 +11,7 @@ import { FileService } from '../../services/file/file.service';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
-  selector: 'unprepared-components-file-input',
+  selector: 'uc-file-input',
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

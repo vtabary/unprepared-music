@@ -17,15 +17,10 @@
       <input type="text" formControlName="tags" />
     </label>
 
-    <unprepared-components-link url="/library"
-      >Cancel</unprepared-components-link
-    >
+    <uc-link url="/library">Cancel</uc-link>
 
-    <unprepared-components-button
-      type="submit"
-      [disabled]="form.invalid"
-      level="primary"
-      >Save</unprepared-components-button
+    <uc-button type="submit" [disabled]="form.invalid" level="primary"
+      >Save</uc-button
     >
   </form>
 </div>

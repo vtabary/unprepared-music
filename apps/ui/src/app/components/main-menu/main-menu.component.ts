@@ -1,11 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import {
-  faBoxesPacking,
-  faHeadphones,
-  faMusic,
-} from '@fortawesome/free-solid-svg-icons';
+import { IconComponent } from '@local/ui-components';
 
 @Component({
   selector: 'unprepared-music-main-menu',
@@ -13,19 +8,6 @@ import {
   styleUrls: ['./main-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, FaIconComponent],
+  imports: [RouterLink, IconComponent],
 })
-export class MainMenuComponent {
-  /**
-   * @internal
-   */
-  public faHeadphones = faHeadphones;
-  /**
-   * @internal
-   */
-  public faMusic = faMusic;
-  /**
-   * @internal
-   */
-  public faBoxesPacking = faBoxesPacking;
-}
+export class MainMenuComponent {}

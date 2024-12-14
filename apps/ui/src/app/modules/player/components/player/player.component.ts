@@ -1,13 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Output } from '@angular/core';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import {
-  faPause,
-  faPlay,
-  faRotate,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons';
-import { ButtonComponent } from '@local/ui-components';
+import { ButtonComponent, IconComponent } from '@local/ui-components';
 import { map, startWith } from 'rxjs';
 import { PlaylistService } from '../../../shared/index';
 
@@ -17,26 +10,9 @@ import { PlaylistService } from '../../../shared/index';
   styleUrls: ['./player.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ButtonComponent, FaIconComponent, AsyncPipe],
+  imports: [ButtonComponent, IconComponent, AsyncPipe],
 })
 export class PlayerComponent {
-  /**
-   * @internal
-   */
-  public faPlay = faPlay;
-  /**
-   * @internal
-   */
-  public faPause = faPause;
-  /**
-   * @internal
-   */
-  public faRotate = faRotate;
-  /**
-   * @internal
-   */
-  public faTrash = faTrash;
-
   @Output()
   public currentItem$ = this.playlist.change.pipe(
     startWith(this.playlist.list()),

@@ -46,14 +46,14 @@ const meta: Meta<ButtonComponent> = {
     },
   },
   render: (args: any) => ({
-    template: `<unprepared-components-button
+    template: `<uc-button
       title="${args.title}"
       level="${args.level}"
       groupOn="${args.groupOn}"
       size="${args.size}"
       display="${args.display}"
       [disabled]="${args.disabled}"
-    >${args.text}</unprepared-components-button>`,
+    >${args.text}</uc-button>`,
   }),
 };
 

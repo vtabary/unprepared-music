@@ -40,10 +40,4 @@ export const appRoutes: Route[] = [
     redirectTo: 'library',
     pathMatch: 'full',
   },
-  {
-    path: '**',
-    outlet: '',
-    redirectTo: 'library',
-    pathMatch: 'full',
-  },
 ];

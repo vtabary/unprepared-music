@@ -1,13 +1,17 @@
-<div class="flex">
-  <div class="flex-none">
-    <unprepared-music-main-menu></unprepared-music-main-menu>
-  </div>
-  <div class="flex-auto m-3">
-    <router-outlet></router-outlet>
-  </div>
-  <div
-    class="flex-auto h-screen px-5 py-8 overflow-y-auto bg-white border-l border-r sm:w-64 w-60 dark:bg-gray-900 dark:border-gray-700"
-  >
-    <router-outlet name="sidebar"></router-outlet>
-  </div>
+<div class="uc-layout h-screen">
+  <uc-layout-column [grow]="0">
+    <a routerLink="/" ucColumnHeader class="p-2 inline-block">
+      <img
+        class="w-auto h-4"
+        src="https://merakiui.com/images/logo.svg"
+        alt=""
+      />
+    </a>
+
+    <unprepared-music-main-menu ucColumnContent></unprepared-music-main-menu>
+  </uc-layout-column>
+  <div class="uc-layout-vertical-separator"></div>
+  <router-outlet></router-outlet>
+  <div class="uc-layout-vertical-separator"></div>
+  <router-outlet name="sidebar"></router-outlet>
 </div>

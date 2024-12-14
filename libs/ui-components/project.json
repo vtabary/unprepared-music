@@ -38,8 +38,16 @@
         "port": 4400,
         "configDir": "libs/ui-components/.storybook",
         "browserTarget": "ui-components:build-storybook",
+        "open": false,
         "compodoc": false,
-        "styles": ["libs/ui-components/src/styles/index.scss"]
+        "styles": ["libs/ui-components/src/styles/index.scss"],
+        "assets": [
+          {
+            "glob": "*.svg",
+            "input": "./node_modules/feather-icons/dist",
+            "output": "/feather-icons"
+          }
+        ]
       },
       "configurations": {
         "ci": {

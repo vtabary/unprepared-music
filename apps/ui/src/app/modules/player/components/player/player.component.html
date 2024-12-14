@@ -1,10 +1,6 @@
-<unprepared-components-button
-  level="primary"
-  [disabled]="(isPlaylistEmpty$ | async) ?? true"
-  ><fa-icon [icon]="faPlay"></fa-icon
-></unprepared-components-button>
-<unprepared-components-button
-  level="primary"
-  [disabled]="(isPlaylistEmpty$ | async) ?? true"
-  ><fa-icon [icon]="faPause"></fa-icon
-></unprepared-components-button>
+<uc-button level="primary" [disabled]="(isPlaylistEmpty$ | async) ?? true"
+  ><uc-icon name="play"></uc-icon
+></uc-button>
+<uc-button level="primary" [disabled]="(isPlaylistEmpty$ | async) ?? true"
+  ><uc-icon name="pause"></uc-icon
+></uc-button>

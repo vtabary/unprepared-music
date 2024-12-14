@@ -1,6 +1,5 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { startWith } from 'rxjs';
 import { PlaylistService } from '../../../shared/index';
 import { PlaylistItemComponent } from '../playlist-item/playlist-item.component';
@@ -18,10 +17,6 @@ export class PlaylistComponent {
    * @internal
    */
   public list$ = this.playlist.change.pipe(startWith(this.playlist.list()));
-  /**
-   * @internal
-   */
-  public faTrash = faTrash;
 
   constructor(private playlist: PlaylistService) {}
 

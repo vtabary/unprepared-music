@@ -4,17 +4,17 @@ import {
   Component,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonComponent } from '@local/ui-components';
+import { ButtonComponent, LayoutColumnComponent } from '@local/ui-components';
 import { Subject, takeUntil } from 'rxjs';
 import { LibraryService } from '../../../shared/index';
 
 @Component({
-  selector: 'unprepared-music-list',
+  selector: 'unprepared-music-project-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, LayoutColumnComponent],
 })
 export class ListComponent implements AfterViewInit {
   private onDestroy$ = new Subject<void>();

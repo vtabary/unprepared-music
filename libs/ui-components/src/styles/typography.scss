@@ -1,0 +1,22 @@
+.uc-header-1,
+.uc-header-2,
+.uc-header-3,
+.uc-header-4 {
+  @apply font-bold;
+}
+
+.uc-header-1 {
+  @apply text-xl;
+}
+
+.uc-header-2 {
+  @apply text-lg;
+}
+
+.uc-header-3 {
+  @apply text-base;
+}
+
+.uc-header-4 {
+  @apply text-sm;
+}

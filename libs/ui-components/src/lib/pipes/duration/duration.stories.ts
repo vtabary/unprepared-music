@@ -16,7 +16,7 @@ const meta: Meta = {
   ],
   render: (args: any) => ({
     props: args,
-    template: `<div>{{ value | duration }}</div>`,
+    template: `<div>{{ value | ucDuration }}</div>`,
   }),
 };
 

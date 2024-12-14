@@ -1,0 +1,21 @@
+.uc-layout {
+  @apply h-full w-full flex flex-row border border-solid border-gray-300 items-stretch;
+}
+
+.uc-layout-column {
+  @apply flex flex-col flex-grow;
+}
+
+.uc-layout-column--header {
+}
+
+.uc-layout-column--content {
+}
+
+.uc-layout-vertical-separator {
+  @apply border-r border-solid border-gray-300 w-0;
+}
+
+.uc-layout-horizontal-separator {
+  @apply border-b border-solid border-gray-300 h-0 w-full;
+}

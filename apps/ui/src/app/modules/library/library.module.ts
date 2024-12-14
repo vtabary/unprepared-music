@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedPlayerModule } from '../shared-player/shared-player.module';
 import { SharedModule } from '../shared/shared.module';
 import { ListComponent } from './components/list/list.component';
@@ -18,7 +17,6 @@ import { MainComponent } from './pages/main/main.component';
     ReactiveFormsModule,
     SharedModule,
     SharedPlayerModule,
-    FontAwesomeModule,
     SoundControlsComponent,
     MainComponent,
     ListComponent,

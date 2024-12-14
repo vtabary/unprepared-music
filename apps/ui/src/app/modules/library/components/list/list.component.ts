@@ -21,7 +21,7 @@ import { LibraryService } from '../../../shared/index';
 import { SoundCardComponent } from '../sound-card/sound-card.component';
 
 @Component({
-  selector: 'unprepared-music-list',
+  selector: 'unprepared-music-library-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

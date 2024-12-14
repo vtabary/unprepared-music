@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { ILibraryFunctions, ISound } from '@local/shared-interfaces';
-import { from, mapTo, Observable, switchMap, tap } from 'rxjs';
+import { from, mapTo, NEVER, Observable, of, switchMap, tap } from 'rxjs';
 
 declare global {
   interface Window {
@@ -28,6 +28,11 @@ export class LibraryService {
    * Load items from a JSON file
    */
   public load(): Observable<ISound[]> {
+    if (!window.library) {
+      // We are outside of Electron
+      return of([]);
+    }
+
     return from(window.library.list()).pipe(
       tap((items) => {
         this.registry = Object.fromEntries(
@@ -53,6 +58,11 @@ export class LibraryService {
     item: Pick<ISound, 'path' | 'type'> &
       Partial<Pick<ISound, 'label' | 'tags'>>
   ): Observable<ISound> {
+    if (!window.library) {
+      // We are outside of Electron
+      return NEVER;
+    }
+
     return from(window.library.add(item)).pipe(
       switchMap((result) => this.load().pipe(mapTo(result)))
     );
@@ -62,6 +72,11 @@ export class LibraryService {
    * Returns the items actually loaded
    */
   public remove(item: ISound): Observable<void> {
+    if (!window.library) {
+      // We are outside of Electron
+      return NEVER;
+    }
+
     return from(window.library.remove(item.path)).pipe(
       switchMap((result) => this.load().pipe(mapTo(result)))
     );

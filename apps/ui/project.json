@@ -20,8 +20,19 @@
         "browser": "apps/ui/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/ui/tsconfig.app.json",
-        "assets": ["apps/ui/src/favicon.ico", "apps/ui/src/assets"],
-        "styles": ["apps/ui/src/styles.scss"],
+        "assets": [
+          "apps/ui/src/favicon.ico",
+          "apps/ui/src/assets",
+          {
+            "glob": "*.svg",
+            "input": "./node_modules/feather-icons/dist",
+            "output": "/feather-icons"
+          }
+        ],
+        "styles": [
+          "libs/ui-components/src/styles/index.scss",
+          "apps/ui/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {

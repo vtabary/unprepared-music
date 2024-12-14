@@ -1,9 +1,9 @@
-Load a project
+<uc-layout-column [grow]="48">
+  <h1 class="uc-header-1" ucColumnHeader>Load a project</h1>
 
-<ul>
-  <li>
-    <unprepared-components-button (click)="onLoadProject()"
-      >Main</unprepared-components-button
-    >
-  </li>
-</ul>
+  <ul ucColumnContent>
+    <li>
+      <uc-button (click)="onLoadProject()">Main</uc-button>
+    </li>
+  </ul>
+</uc-layout-column>

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { PlayerComponent } from './components/player/player.component';
 import { PlaylistItemComponent } from './components/playlist-item/playlist-item.component';
@@ -13,7 +12,6 @@ import { PlayerRoutingModule } from './player-routing.module';
     CommonModule,
     PlayerRoutingModule,
     SharedModule,
-    FontAwesomeModule,
     PlaylistComponent,
     PlayerComponent,
     MainComponent,

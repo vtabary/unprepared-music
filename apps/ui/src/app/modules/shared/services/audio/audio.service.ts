@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAudioFunctions } from '@local/shared-interfaces';
-import { from, Observable } from 'rxjs';
+import { from, NEVER, Observable } from 'rxjs';
 
 declare global {
   interface Window {
@@ -20,6 +20,11 @@ export class AudioService {
     tags: string[];
     duration?: number;
   }> {
+    if (!window.library) {
+      // We are outside of Electron
+      return NEVER;
+    }
+
     return from(window.audio.getMetadata(path));
   }
 }

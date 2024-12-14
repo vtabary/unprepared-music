@@ -55,14 +55,14 @@ const meta: Meta<LinkComponent> = {
     }),
   ],
   render: (args: any) => ({
-    template: `<unprepared-components-link
+    template: `<uc-link
       title="${args.title}"
       level="${args.level}"
       groupOn="${args.groupOn}"
       size="${args.size}"
       display="${args.display}"
       [disabled]="${args.disabled}"
-    >${args.text}</unprepared-components-link>`,
+    >${args.text}</uc-link>`,
   }),
 };
 

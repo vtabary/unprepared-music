@@ -4,10 +4,12 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faPlay, faRotate, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ISound } from '@local/shared-interfaces';
-import { ButtonComponent, DurationPipe } from '@local/ui-components';
+import {
+  ButtonComponent,
+  DurationPipe,
+  IconComponent,
+} from '@local/ui-components';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
@@ -16,24 +18,11 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./playlist-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ButtonComponent, FaIconComponent, DurationPipe],
+  imports: [ButtonComponent, DurationPipe, IconComponent],
 })
 export class PlaylistItemComponent {
   @Input({ required: true })
   public item!: ISound;
-
-  /**
-   * @internal
-   */
-  public faPlay = faPlay;
-  /**
-   * @internal
-   */
-  public faRotate = faRotate;
-  /**
-   * @internal
-   */
-  public faTrash = faTrash;
 
   private _remove = new Subject<void>();
 
