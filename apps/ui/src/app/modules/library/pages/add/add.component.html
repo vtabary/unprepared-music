@@ -2,9 +2,7 @@
   <form [formGroup]="form" (submit)="onAdd()" class="form">
     <label>
       <span>Select a music file</span>
-      <unprepared-music-file-input
-        formControlName="file"
-      ></unprepared-music-file-input>
+      <uc-file-input formControlName="file"></uc-file-input>
     </label>
 
     <label>

@@ -1,1 +1,4 @@
-@import './typography', './icon', './button', './layout';
+@use './typography';
+@use './icon';
+@use './button';
+@use './layout';
