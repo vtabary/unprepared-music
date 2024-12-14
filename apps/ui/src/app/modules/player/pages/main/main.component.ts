@@ -8,7 +8,6 @@ import { PlaylistComponent } from '../../components/playlist/playlist.component'
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [PlayerComponent, PlaylistComponent, LayoutColumnComponent],
 })
 export class MainComponent {}

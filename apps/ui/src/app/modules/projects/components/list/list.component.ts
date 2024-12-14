@@ -13,7 +13,6 @@ import { LibraryService } from '../../../shared/index';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ButtonComponent, LayoutColumnComponent],
 })
 export class ListComponent implements AfterViewInit {

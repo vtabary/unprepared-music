@@ -7,7 +7,6 @@ import { IconComponent } from '@local/ui-components';
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [RouterLink, IconComponent],
 })
 export class MainMenuComponent {}

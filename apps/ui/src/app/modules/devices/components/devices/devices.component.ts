@@ -9,7 +9,6 @@ import { PlayerConfigurationService } from '../../../configuration/index';
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ButtonComponent, AsyncPipe],
 })
 export class DevicesComponent implements OnInit {

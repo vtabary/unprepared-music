@@ -9,7 +9,6 @@ import { PlaylistService } from '../../../shared/index';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ButtonComponent, IconComponent, AsyncPipe],
 })
 export class PlayerComponent {

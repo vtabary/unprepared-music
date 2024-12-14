@@ -17,7 +17,6 @@ import { Observable, Subject } from 'rxjs';
   templateUrl: './playlist-item.component.html',
   styleUrls: ['./playlist-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ButtonComponent, DurationPipe, IconComponent],
 })
 export class PlaylistItemComponent {

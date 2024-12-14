@@ -17,7 +17,6 @@ import { PlaylistService } from '../../../shared/index';
   styleUrls: ['./sound-controls.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AudioManagerService],
-  standalone: true,
   imports: [ButtonComponent, IconComponent, AsyncPipe],
 })
 export class SoundControlsComponent implements OnInit {

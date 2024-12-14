@@ -8,7 +8,6 @@ import { SoundControlsComponent } from '../sound-controls/sound-controls.compone
   templateUrl: './sound-card.component.html',
   styleUrls: ['./sound-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ChipsComponent, SoundControlsComponent],
 })
 export class SoundCardComponent {

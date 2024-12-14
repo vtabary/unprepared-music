@@ -8,7 +8,6 @@ import { MainMenuComponent } from '../main-menu/main-menu.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   imports: [LayoutColumnComponent, MainMenuComponent, RouterOutlet],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {

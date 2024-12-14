@@ -22,7 +22,6 @@ import { ButtonComponent } from '../button/button.component';
       useExisting: forwardRef(() => FileInputComponent),
     },
   ],
-  standalone: true,
   imports: [ButtonComponent],
 })
 export class FileInputComponent implements ControlValueAccessor {

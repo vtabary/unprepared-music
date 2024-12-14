@@ -9,7 +9,6 @@ import { PlaylistItemComponent } from '../playlist-item/playlist-item.component'
   templateUrl: './playlist.component.html',
   styleUrls: ['./playlist.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [PlaylistItemComponent, AsyncPipe],
 })
 export class PlaylistComponent {

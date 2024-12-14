@@ -25,7 +25,6 @@ import { SoundCardComponent } from '../sound-card/sound-card.component';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     ButtonComponent,

@@ -13,7 +13,6 @@ import { Observable, Subject } from 'rxjs';
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [RouterLink, NgClass, JsonPipe],
 })
 export class LinkComponent {

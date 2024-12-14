@@ -24,7 +24,6 @@ import { AudioService, LibraryService } from '../../../shared/index';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     FileInputComponent,

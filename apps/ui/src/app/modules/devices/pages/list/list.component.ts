@@ -7,7 +7,6 @@ import { DevicesComponent } from '../../components/devices/devices.component';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DevicesComponent, LayoutColumnComponent],
 })
 export class ListComponent {}
