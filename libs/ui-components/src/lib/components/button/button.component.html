@@ -1,12 +1,8 @@
 <button
   [type]="type"
   [title]="title"
-  class="font-bold uppercase outline-none focus:outline-none ease-linear transition-all duration-150"
+  class="uc-button"
   [ngClass]="{
-    'uc-group-on-left': groupOn === 'left',
-    'uc-group-on-right': groupOn === 'right',
-    'uc-group-on-both': groupOn === 'both',
-    'uc-no-group': groupOn === 'default',
     'uc-size-small': size === 'small',
     'uc-size-medium': size === 'medium',
     'uc-size-large': size === 'large',

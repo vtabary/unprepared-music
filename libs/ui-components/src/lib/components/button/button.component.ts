@@ -25,9 +25,6 @@ export class ButtonComponent {
   public level: 'primary' | 'secondary' | 'default' | 'text' = 'default';
 
   @Input()
-  public groupOn: 'default' | 'left' | 'right' | 'both' = 'default';
-
-  @Input()
   public size: 'small' | 'medium' | 'large' = 'medium';
 
   @Input()

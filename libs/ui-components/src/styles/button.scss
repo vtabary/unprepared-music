@@ -2,38 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/**
- * Button groups
- */
-.uc-group-on-left {
-  @apply rounded-r mr-1 border-l-0;
-}
-
-.uc-group-on-right {
-  @apply rounded-l border-r-0;
-}
-
-.uc-group-on-both {
-  @apply border-x-0;
-}
-
-.uc-no-group {
-  @apply rounded mr-1 p-1;
+.uc-button {
+  @apply outline-none focus:outline-none
+    ease-linear transition-all duration-150
+    inline-flex gap-2 items-center justify-center
+    font-semibold rounded;
 }
 
 /**
  * Sizes
  */
 .uc-size-small {
-  @apply text-xs px-4 py-2;
+  @apply text-xs px-1 py-0.5;
 }
 
 .uc-size-medium {
-  @apply text-sm px-6 py-3;
+  @apply text-base px-2 py-1;
 }
 
 .uc-size-large {
-  @apply px-8 py-3;
+  @apply text-lg px-2.5 py-1.5;
 }
 
 /**

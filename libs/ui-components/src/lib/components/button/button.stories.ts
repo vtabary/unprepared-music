@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
 
+import { IconComponent } from '../icon/icon.component';
 import { ButtonComponent } from './button.component';
 
 export const ActionsData = {
@@ -8,7 +9,6 @@ export const ActionsData = {
   text: 'Some content',
   title: 'Some content',
   level: 'primary' as 'primary' | 'secondary' | 'default' | 'text',
-  groupOn: 'default' as 'default' | 'left' | 'right' | 'both',
   size: 'medium' as 'small' | 'medium' | 'large',
   display: 'button' as 'button' | 'text',
   disabled: false,
@@ -30,12 +30,6 @@ const meta: Meta<ButtonComponent> = {
       },
       options: ['primary', 'secondary', 'default', 'text'],
     },
-    groupOn: {
-      control: {
-        type: 'select',
-      },
-      options: ['default', 'left', 'right', 'both'],
-    },
     size: {
       control: { type: 'select' },
       options: ['small', 'medium', 'large'],
@@ -46,38 +40,69 @@ const meta: Meta<ButtonComponent> = {
     },
   },
   render: (args: any) => ({
+    props: { ...args },
     template: `<uc-button
-      title="${args.title}"
-      level="${args.level}"
-      groupOn="${args.groupOn}"
-      size="${args.size}"
-      display="${args.display}"
-      [disabled]="${args.disabled}"
-    >${args.text}</uc-button>`,
+      [title]="title"
+      [level]="level"
+      [size]="size"
+      [display]="display"
+      [disabled]="disabled"
+    >{{ text }}</uc-button>`,
   }),
 };
 
 export default meta;
 type Story = StoryObj<ButtonComponent>;
 
+export const Small: Story = {
+  args: {
+    size: 'small',
+  },
+};
+
 export const Default: Story = {
+  name: 'Medium',
   args: {},
 };
 
-// export const Pinned: Story = {
-//   args: {
-//     task: {
-//       ...Default.args?.task,
-//       state: 'TASK_PINNED',
-//     },
-//   },
-// };
+export const Large: Story = {
+  args: {
+    size: 'large',
+  },
+};
 
-// export const Archived: Story = {
-//   args: {
-//     task: {
-//       ...Default.args?.task,
-//       state: 'TASK_ARCHIVED',
-//     },
-//   },
-// };
+export const WithIcon: Story = {
+  decorators: [
+    moduleMetadata({
+      imports: [IconComponent],
+    }),
+  ],
+  render: (args) => ({
+    props: { ...args },
+    template: `<uc-button
+      [title]="title"
+      [level]="level"
+      [size]="size"
+      [display]="display"
+      [disabled]="disabled"
+    >{{ text }}<uc-icon name="package"></uc-icon></uc-button>`,
+  }),
+};
+
+export const IconOnly: Story = {
+  decorators: [
+    moduleMetadata({
+      imports: [IconComponent],
+    }),
+  ],
+  render: (args) => ({
+    props: { ...args },
+    template: `<uc-button
+      [title]="title"
+      [level]="level"
+      [size]="size"
+      [display]="display"
+      [disabled]="disabled"
+    ><uc-icon name="package"></uc-icon></uc-button>`,
+  }),
+};
