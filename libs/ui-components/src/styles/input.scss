@@ -1,12 +1,28 @@
-.uc-input {
-  @apply flex h-9 w-full rounded-md border bg-transparent
+input,
+textarea {
+  &.uc-input {
+    @apply flex h-9 w-full rounded-md border bg-transparent
     px-3 py-1 text-base shadow-sm transition-colors
     disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+  }
 }
 
-textarea.uc-input {
+textarea.uc-input,
+.uc-input--textarea {
   @apply flex min-h-[60px] w-full
     rounded-md border bg-transparent
     px-3 py-2 text-base shadow-sm
     disabled:opacity-50 md:text-sm resize-none;
+}
+
+.uc-input--with-prefixed-icon {
+  @apply relative;
+}
+
+.uc-input--with-prefixed-icon .uc-input {
+  @apply relative pl-8;
+}
+
+.uc-input-prefixed-icon {
+  @apply absolute left-2.5 top-2.5 text-gray-500;
 }

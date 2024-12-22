@@ -1,0 +1,11 @@
+:root {
+  --uc-primary-color: rgb(236 72 153 / var(--tw-border-opacity, 1));
+  --uc-primary-color-active: rgb(219 39 119 / var(--tw-bg-opacity, 1));
+  --uc-primary-color-hover: rgb(244 114 182 / var(--tw-bg-opacity, 1));
+
+  --uc-neutral-color: rgb(107 114 128 / var(--tw-bg-opacity, 1));
+  --uc-neutral-color-active: rgb(75 85 99 / var(--tw-bg-opacity, 1));
+  --uc-neutral-color-hover: rgb(156 163 175 / var(--tw-bg-opacity, 1));
+
+  --uc-disabled-color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+}

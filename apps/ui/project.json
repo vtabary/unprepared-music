@@ -24,7 +24,7 @@
           "apps/ui/src/favicon.ico",
           "apps/ui/src/assets",
           {
-            "glob": "*.svg",
+            "glob": "**/*.svg",
             "input": "./node_modules/feather-icons/dist",
             "output": "/feather-icons"
           }

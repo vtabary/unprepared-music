@@ -1,17 +1,22 @@
 <div class="flex flex-col">
-  <div class="flex-none mb-5">
-    <form [formGroup]="form" (submit)="onSearch()" class="flex">
-      <input
-        type="search"
-        placeholder="Search terms"
-        formControlName="terms"
-        spellcheck="false"
-        autocorrect="off"
-        enterKeyHint="search"
-        class="flex-auto"
-      />
-      <uc-button type="submit" level="primary">Search</uc-button>
-      <uc-link type="button" level="secondary" url="/library/add">Add</uc-link>
+  <div class="mb-5 p-2">
+    <form [formGroup]="form" (submit)="onSearch()" class="flex gap-2">
+      <div class="uc-input--with-prefixed-icon grow">
+        <uc-icon name="search" class="uc-input-prefixed-icon"></uc-icon>
+        <input
+          type="search"
+          placeholder="Search terms"
+          formControlName="terms"
+          spellcheck="false"
+          autocorrect="off"
+          enterKeyHint="search"
+          class="uc-input"
+        />
+      </div>
+      <button class="uc-button uc-button--primary" type="submit">Search</button>
+      <a class="uc-button uc-button--secondary" routerLink="/library/add"
+        >Add</a
+      >
     </form>
   </div>
   <div class="flex-auto">

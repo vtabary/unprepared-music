@@ -5,11 +5,7 @@ import {
   Output,
 } from '@angular/core';
 import { ISound } from '@local/shared-interfaces';
-import {
-  ButtonComponent,
-  DurationPipe,
-  IconComponent,
-} from '@local/ui-components';
+import { DurationPipe, IconComponent } from '@local/ui-components';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
@@ -17,7 +13,7 @@ import { Observable, Subject } from 'rxjs';
   templateUrl: './playlist-item.component.html',
   styleUrls: ['./playlist-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ButtonComponent, DurationPipe, IconComponent],
+  imports: [DurationPipe, IconComponent],
 })
 export class PlaylistItemComponent {
   @Input({ required: true })

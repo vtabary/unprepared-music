@@ -15,10 +15,14 @@
       <input type="text" formControlName="tags" />
     </label>
 
-    <uc-link url="/library">Cancel</uc-link>
+    <a routerLink="/library" class="uc-button">Cancel</a>
 
-    <uc-button type="submit" [disabled]="form.invalid" level="primary"
-      >Save</uc-button
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      class="uc-button uc-button--primary"
     >
+      Save
+    </button>
   </form>
 </div>

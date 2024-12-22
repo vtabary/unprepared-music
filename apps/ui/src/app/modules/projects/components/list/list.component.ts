@@ -4,7 +4,7 @@ import {
   Component,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonComponent, LayoutColumnComponent } from '@local/ui-components';
+import { LayoutColumnComponent } from '@local/ui-components';
 import { Subject, takeUntil } from 'rxjs';
 import { LibraryService } from '../../../shared/index';
 
@@ -13,7 +13,7 @@ import { LibraryService } from '../../../shared/index';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ButtonComponent, LayoutColumnComponent],
+  imports: [LayoutColumnComponent],
 })
 export class ListComponent implements AfterViewInit {
   private onDestroy$ = new Subject<void>();

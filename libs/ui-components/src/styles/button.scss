@@ -7,60 +7,143 @@
     ease-linear transition-all duration-150
     inline-flex gap-2 items-center justify-center
     font-semibold rounded;
+
+  @apply bg-white border border-solid;
+
+  @apply text-base px-2 py-1;
+
+  color: var(--uc-neutral-color);
+  border-color: var(--uc-neutral-color);
+}
+
+.uc-button:not(.uc-button--disabled) {
+  &:hover {
+    color: white;
+    background-color: var(--uc-neutral-color-hover);
+    border-color: var(--uc-neutral-color-hover);
+  }
+}
+
+.uc-button.uc-button--active,
+.uc-button:active {
+  color: white;
+  background-color: var(--uc-neutral-color-active);
+  border-color: var(--uc-neutral-color-active);
 }
 
 /**
  * Sizes
  */
-.uc-size-small {
+.uc-button--small {
   @apply text-xs px-1 py-0.5;
 }
 
-.uc-size-medium {
-  @apply text-base px-2 py-1;
-}
-
-.uc-size-large {
+.uc-button--large {
   @apply text-lg px-2.5 py-1.5;
 }
 
 /**
  * States
  */
-.uc-disabled {
-  @apply text-gray-400 bg-transparent border border-solid border-white hover:text-gray-400 active:text-gray-400;
+.uc-button--disabled,
+.uc-button:disabled {
+  @apply bg-transparent;
+
+  border-color: var(--uc-disabled-color);
+  color: var(--uc-disabled-color);
+
+  &,
+  &:active,
+  &:hover {
+    color: var(--uc-disabled-color);
+  }
 }
 
 /**
  * Levels
  */
-.uc-level-default {
-  @apply text-gray-500 bg-white border border-solid border-gray-500 hover:bg-gray-500 hover:text-white active:bg-gray-600;
+
+.uc-button--primary:not(.uc-button--disabled, :disabled) {
+  @apply text-white border border-solid;
+  background-color: var(--uc-primary-color);
+  border-color: var(--uc-primary-color);
+
+  &:hover {
+    background-color: var(--uc-primary-color-hover);
+    border-color: var(--uc-primary-color-hover);
+  }
 }
 
-.uc-level-primary:not(.uc-disabled) {
-  @apply text-white bg-pink-500 active:bg-pink-600 border border-solid border-pink-500 hover:bg-pink-400 active:bg-pink-600;
+.uc-button--primary.uc-button--active,
+.uc-button--primary:active {
+  background-color: var(--uc-primary-color-active);
+  border-color: var(--uc-primary-color-active);
 }
 
-.uc-level-secondary {
+.uc-button--secondary {
   @apply bg-transparent border border-solid;
 }
 
-.uc-level-secondary:not(.uc-disabled) {
-  @apply text-pink-500 border-pink-500 hover:bg-pink-400 hover:text-white active:bg-pink-600;
+.uc-button--secondary:not(.uc-button--disabled, :disabled) {
+  @apply hover:text-white;
+  color: var(--uc-primary-color);
+  border-color: var(--uc-primary-color);
+
+  &:hover {
+    background-color: var(--uc-primary-color-hover);
+    border-color: var(--uc-primary-color-hover);
+  }
 }
 
-/**
- * Display as
- */
-.uc-display-button {
-  @apply shadow;
+.uc-button--secondary.uc-button--active,
+.uc-button--secondary:active {
+  @apply text-white;
+
+  background-color: var(--uc-primary-color-active);
+  border-color: var(--uc-primary-color-active);
 }
 
-.uc-display-button:not(.disabled) {
-  @apply hover:shadow-md;
+.uc-button--ghost {
+  @apply bg-transparent border-none;
 }
 
-.uc-display-text {
-  @apply border border-solid border-transparent shadow-none bg-transparent cursor-default;
+.uc-button--ghost:not(.uc-button--disabled, :disabled) {
+  @apply hover:text-white;
+  color: var(--uc-primary-color);
+
+  &:hover {
+    background-color: var(--uc-primary-color-hover);
+  }
+
+  &:active {
+    background-color: var(--uc-primary-color-active);
+  }
+}
+
+.uc-button--ghost.uc-button--active,
+.uc-button--ghost:active {
+  @apply text-white;
+
+  background-color: var(--uc-primary-color-active);
+  border-color: var(--uc-primary-color-active);
+}
+
+.uc-button--link {
+  @apply bg-transparent border-none;
+}
+
+.uc-button--link:not(.uc-button--disabled, :disabled) {
+  @apply hover:underline hover:bg-transparent;
+  color: var(--uc-neutral-color);
+
+  &:hover {
+    color: var(--uc-neutral-color-hover);
+  }
+}
+
+.uc-button--link.uc-button--active,
+.uc-button--link:active {
+  @apply bg-transparent underline;
+
+  color: var(--uc-neutral-color-active);
 }

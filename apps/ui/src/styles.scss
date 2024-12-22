@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
 /* You can add global styles to this file, and also import other style files */
 .form > label {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+ng-component {
+  display: contents;
 }

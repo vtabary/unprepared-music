@@ -1,6 +1,5 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ButtonComponent } from '@local/ui-components';
 import { Subject } from 'rxjs';
 import { PlayerConfigurationService } from '../../../configuration/index';
 
@@ -9,7 +8,7 @@ import { PlayerConfigurationService } from '../../../configuration/index';
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ButtonComponent, AsyncPipe],
+  imports: [AsyncPipe],
 })
 export class DevicesComponent implements OnInit {
   /**

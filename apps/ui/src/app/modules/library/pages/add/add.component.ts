@@ -11,11 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  ButtonComponent,
-  FileInputComponent,
-  LinkComponent,
-} from '@local/ui-components';
+import { FileInputComponent } from '@local/ui-components';
 import { first, of, Subject, switchMap, takeUntil } from 'rxjs';
 import { AudioService, LibraryService } from '../../../shared/index';
 
@@ -24,12 +20,7 @@ import { AudioService, LibraryService } from '../../../shared/index';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    FileInputComponent,
-    LinkComponent,
-    ButtonComponent,
-  ],
+  imports: [ReactiveFormsModule, FileInputComponent],
 })
 export class AddLibraryComponent implements OnInit, OnDestroy {
   /**

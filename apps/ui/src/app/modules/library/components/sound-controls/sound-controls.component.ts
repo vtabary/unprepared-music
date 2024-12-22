@@ -5,7 +5,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { ButtonComponent, IconComponent } from '@local/ui-components';
+import { IconComponent } from '@local/ui-components';
 import { map } from 'rxjs';
 import { PlayerConfigurationService } from '../../../configuration/index';
 import { AudioManagerService, AudioStatus } from '../../../shared-player/index';
@@ -17,7 +17,7 @@ import { PlaylistService } from '../../../shared/index';
   styleUrls: ['./sound-controls.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AudioManagerService],
-  imports: [ButtonComponent, IconComponent, AsyncPipe],
+  imports: [IconComponent, AsyncPipe],
 })
 export class SoundControlsComponent implements OnInit {
   @Input()

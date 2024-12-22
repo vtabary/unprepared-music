@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IconComponent } from '@local/ui-components';
 
 @Component({
@@ -7,6 +7,6 @@ import { IconComponent } from '@local/ui-components';
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, IconComponent],
+  imports: [RouterLink, IconComponent, RouterLinkActive],
 })
 export class MainMenuComponent {}

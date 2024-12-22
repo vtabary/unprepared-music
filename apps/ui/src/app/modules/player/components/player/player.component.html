@@ -1,6 +1,14 @@
-<uc-button level="primary" [disabled]="(isPlaylistEmpty$ | async) ?? true"
-  ><uc-icon name="play"></uc-icon
-></uc-button>
-<uc-button level="primary" [disabled]="(isPlaylistEmpty$ | async) ?? true"
-  ><uc-icon name="pause"></uc-icon
-></uc-button>
+<div class="flex flex-row gap-2 p-2">
+  <button
+    class="uc-button uc-button--primary"
+    [disabled]="(isPlaylistEmpty$ | async) ?? true"
+  >
+    <uc-icon name="play"></uc-icon>
+  </button>
+  <button
+    class="uc-button uc-button--primary"
+    [disabled]="(isPlaylistEmpty$ | async) ?? true"
+  >
+    <uc-icon name="pause"></uc-icon>
+  </button>
+</div>

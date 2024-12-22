@@ -1,26 +1,28 @@
-<aside
-  class="flex flex-col items-center w-16 py-8 overflow-y-auto bg-white dark:bg-gray-900 dark:border-gray-700"
->
-  <nav class="flex flex-col flex-1 space-y-6">
-    <a
-      routerLink="/library"
-      class="p-1.5 text-gray-700 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-100"
-      ><uc-icon name="music" class="mr-2"></uc-icon
-    ></a>
-
-    <a
-      routerLink="/projects"
-      class="p-1.5 text-gray-700 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-100"
-      ><uc-icon name="package" class="mr-2"></uc-icon
-    ></a>
-
-    <a
-      routerLink="/devices"
-      class="p-1.5 text-gray-700 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-100"
-    >
-      <uc-icon name="headphones" class="mr-2"></uc-icon>
-    </a>
-  </nav>
-
-  <div class="flex flex-col space-y-6"></div>
-</aside>
+<nav class="p-2">
+  <ul class="uc-navigation-menu">
+    <li>
+      <a
+        routerLink="/library"
+        routerLinkActive="uc-button--active"
+        class="uc-navigation-menu-item uc-button uc-button--ghost uc-button--medium"
+        ><uc-icon name="music" class="mr-2"></uc-icon> Library</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/projects"
+        routerLinkActive="uc-button--active"
+        class="uc-navigation-menu-item uc-button uc-button--ghost uc-button--medium"
+        ><uc-icon name="package" class="mr-2"></uc-icon> Projects</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/devices"
+        routerLinkActive="uc-button--active"
+        class="uc-navigation-menu-item uc-button uc-button--ghost uc-button--medium"
+        ><uc-icon name="headphones" class="mr-2"></uc-icon> Devices</a
+      >
+    </li>
+  </ul>
+</nav>

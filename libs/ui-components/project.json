@@ -43,7 +43,7 @@
         "styles": ["libs/ui-components/src/styles/index.scss"],
         "assets": [
           {
-            "glob": "*.svg",
+            "glob": "**/*.svg",
             "input": "./node_modules/feather-icons/dist",
             "output": "/feather-icons"
           }

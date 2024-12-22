@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ButtonComponent } from './button.component';
+import { LayoutColumnComponent } from './layout-column.component';
 
-describe('ButtonComponent', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
+describe('LayoutColumnComponent', () => {
+  let component: LayoutColumnComponent;
+  let fixture: ComponentFixture<LayoutColumnComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ButtonComponent],
+      declarations: [LayoutColumnComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ButtonComponent);
+    fixture = TestBed.createComponent(LayoutColumnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

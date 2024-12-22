@@ -8,7 +8,6 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { first } from 'rxjs';
 import { FileService } from '../../services/file/file.service';
-import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'uc-file-input',
@@ -22,7 +21,7 @@ import { ButtonComponent } from '../button/button.component';
       useExisting: forwardRef(() => FileInputComponent),
     },
   ],
-  imports: [ButtonComponent],
+  imports: [],
 })
 export class FileInputComponent implements ControlValueAccessor {
   @Input()

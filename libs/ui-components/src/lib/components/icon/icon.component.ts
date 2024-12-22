@@ -6,6 +6,9 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styleUrls: ['./icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  host: {
+    '[class.uc-icon]': 'true',
+  },
 })
 export class IconComponent {
   @Input()

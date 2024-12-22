@@ -1,4 +1,4 @@
-<uc-button (click)="onRefresh()">Refresh</uc-button>
+<button (click)="onRefresh()" class="uc-button">Refresh</button>
 
 @if (devices$ | async; as devices) { @if (devices.length > 0) {
 <ul>
@@ -10,12 +10,12 @@
     <span>[Test]</span>
     }
     <span>{{ device.label || 'Device without label' }}</span>
-    <uc-button (click)="onSelectMainDevice(device.deviceId)" groupOn="right"
-      >Select as main</uc-button
-    >
-    <uc-button (click)="onSelectTestDevice(device.deviceId)" groupOn="left"
-      >Select as test</uc-button
-    >
+    <button (click)="onSelectMainDevice(device.deviceId)" class="uc-button">
+      Select as main
+    </button>
+    <button (click)="onSelectTestDevice(device.deviceId)" class="uc-button">
+      Select as test
+    </button>
   </li>
   }
 </ul>

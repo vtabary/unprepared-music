@@ -6,8 +6,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { ISound } from '@local/shared-interfaces';
-import { ButtonComponent, LinkComponent } from '@local/ui-components';
+import { IconComponent } from '@local/ui-components';
 import Fuse from 'fuse.js';
 import {
   Observable,
@@ -27,10 +28,10 @@ import { SoundCardComponent } from '../sound-card/sound-card.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
-    ButtonComponent,
-    LinkComponent,
     SoundCardComponent,
     AsyncPipe,
+    IconComponent,
+    RouterLink,
   ],
 })
 export class ListComponent implements OnInit, OnDestroy {

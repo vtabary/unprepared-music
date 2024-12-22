@@ -1,6 +1,10 @@
 .uc-icon {
   @apply inline-block;
 
+  line-height: 0.85em;
+}
+
+.uc-icon svg {
   width: 0.85em;
   height: 0.85em;
   stroke: currentColor;

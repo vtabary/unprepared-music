@@ -1,5 +1,5 @@
 .uc-layout {
-  @apply h-full w-full flex flex-row border border-solid border-gray-300 items-stretch;
+  @apply h-full w-full flex flex-row border border-solid border-gray-300 items-stretch rounded-lg;
 }
 
 .uc-layout-column {
@@ -7,15 +7,16 @@
 }
 
 .uc-layout-column--header {
+  @apply items-center flex flex-row h-12;
 }
 
 .uc-layout-column--content {
 }
 
 .uc-layout-vertical-separator {
-  @apply border-r border-solid border-gray-300 w-0;
+  @apply border-r border-solid border-gray-300 w-0 grow-0;
 }
 
 .uc-layout-horizontal-separator {
-  @apply border-b border-solid border-gray-300 h-0 w-full;
+  @apply border-b border-solid border-gray-300 h-0 w-full grow-0;
 }

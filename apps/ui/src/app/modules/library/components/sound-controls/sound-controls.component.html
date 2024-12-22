@@ -1,25 +1,22 @@
-@if ((isPlaying$ | async) === false) {<uc-button
-  level="default"
-  display="text"
-  size="small"
+@if ((isPlaying$ | async) === false) {<button
+  class="uc-button uc-button--ghost"
   title="Play for director only"
   (click)="onPlayTest()"
-  ><uc-icon name="play"></uc-icon></uc-button
+>
+  <uc-icon name="play"></uc-icon></button
 >} @else {
-<uc-button
-  level="default"
-  display="text"
-  size="small"
+<button
+  class="uc-button uc-button--ghost"
   title="Pause for director only"
   (click)="onPause()"
-  ><uc-icon name="pause"></uc-icon
-></uc-button>
+>
+  <uc-icon name="pause"></uc-icon>
+</button>
 }
-<uc-button
-  level="secondary"
-  display="text"
+<button
+  class="uc-button uc-button--ghost uc-button--secondary"
   (click)="onAddPlaylist()"
-  size="small"
   title="Add to playlist"
-  ><uc-icon name="plus"></uc-icon
-></uc-button>
+>
+  <uc-icon name="plus"></uc-icon>
+</button>

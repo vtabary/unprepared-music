@@ -74,6 +74,8 @@ export default class App {
         preload: join(__dirname, 'main.preload.js'),
       },
       // frame: false,
+      // transparent: true,
+      // backgroundColor: '#00FFFFFF',
     });
     App.mainWindow.setMenu(null);
     App.mainWindow.center();

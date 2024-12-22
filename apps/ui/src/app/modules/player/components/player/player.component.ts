@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Output } from '@angular/core';
-import { ButtonComponent, IconComponent } from '@local/ui-components';
+import { IconComponent } from '@local/ui-components';
 import { map, startWith } from 'rxjs';
 import { PlaylistService } from '../../../shared/index';
 
@@ -9,7 +9,7 @@ import { PlaylistService } from '../../../shared/index';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ButtonComponent, IconComponent, AsyncPipe],
+  imports: [IconComponent, AsyncPipe],
 })
 export class PlayerComponent {
   @Output()
