@@ -16,7 +16,7 @@
   border-color: var(--uc-neutral-color);
 }
 
-.uc-button:not(.uc-button--disabled) {
+.uc-button:not(.uc-button--disabled, :disabled) {
   &:hover {
     color: white;
     background-color: var(--uc-neutral-color-hover);

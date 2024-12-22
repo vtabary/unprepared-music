@@ -1,9 +1,4 @@
-<div
-  class="uc-layout-column"
-  [style.flex]="grow"
-  [style.flexShrink]="grow"
-  [style.flexBasis]="grow"
->
+<div class="uc-layout-column" [style.width]="width" [style.flexGrow]="grow">
   <div class="uc-layout-column--header">
     <ng-content select="[ucColumnHeader]"></ng-content>
   </div>

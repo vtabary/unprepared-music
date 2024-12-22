@@ -1,14 +1,16 @@
 <div class="uc-layout h-screen">
-  <uc-layout-column [grow]="20">
-    <a routerLink="/" ucColumnHeader class="p-2 inline-block">
-      <img
-        class="w-auto h-4"
-        src="https://merakiui.com/images/logo.svg"
-        alt=""
-      />
-    </a>
+  <uc-layout-column [width]="reducedMenu ? undefined : '20%'">
+    <div ucColumnHeader class="p-2 flex flex-row w-full">
+      <div class="flex-grow"></div>
+      <button type="button" (click)="onToggleMenu()">
+        <uc-icon title="Toggle menu" name="menu"></uc-icon>
+      </button>
+    </div>
 
-    <unprepared-music-main-menu ucColumnContent></unprepared-music-main-menu>
+    <unprepared-music-main-menu
+      ucColumnContent
+      [collapseMenu]="reducedMenu"
+    ></unprepared-music-main-menu>
   </uc-layout-column>
   <div class="uc-layout-vertical-separator"></div>
   <router-outlet></router-outlet>

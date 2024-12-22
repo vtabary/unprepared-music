@@ -10,4 +10,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class LayoutColumnComponent {
   @Input()
   public grow = 0;
+
+  @Input()
+  public width?: string;
 }

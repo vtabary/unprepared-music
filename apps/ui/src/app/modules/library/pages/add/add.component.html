@@ -1,28 +1,38 @@
-<div class="flex flex-col">
-  <form [formGroup]="form" (submit)="onAdd()" class="form">
-    <label>
-      <span>Select a music file</span>
-      <uc-file-input formControlName="file"></uc-file-input>
-    </label>
+<uc-layout-column [grow]="48">
+  <h1 class="uc-header-1 p-2" ucColumnHeader>Add a file to the library</h1>
 
-    <label>
-      <span>Music name (optional)</span>
-      <input type="text" formControlName="label" />
-    </label>
-
-    <label>
-      <span>Tags, separated by a comma "," (optional)</span>
-      <input type="text" formControlName="tags" />
-    </label>
-
-    <a routerLink="/library" class="uc-button">Cancel</a>
-
-    <button
-      type="submit"
-      [disabled]="form.invalid"
-      class="uc-button uc-button--primary"
+  <div class="flex flex-col p-2" ucColumnContent>
+    <form
+      [formGroup]="form"
+      (submit)="onAdd()"
+      class="form flex flex-col gap-2"
     >
-      Save
-    </button>
-  </form>
-</div>
+      <label>
+        <span>Select a music file</span>
+        <uc-file-input formControlName="file"></uc-file-input>
+      </label>
+
+      <label>
+        <span>Music name (optional)</span>
+        <input type="text" formControlName="label" />
+      </label>
+
+      <label>
+        <span>Tags, separated by a comma "," (optional)</span>
+        <input type="text" formControlName="tags" />
+      </label>
+
+      <div class="text-right">
+        <a routerLink="/library" class="uc-button">Cancel</a>
+
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="uc-button uc-button--primary"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</uc-layout-column>

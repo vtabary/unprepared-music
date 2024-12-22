@@ -5,7 +5,9 @@
         routerLink="/library"
         routerLinkActive="uc-button--active"
         class="uc-navigation-menu-item uc-button uc-button--ghost uc-button--medium"
-        ><uc-icon name="music" class="mr-2"></uc-icon> Library</a
+        title="Library"
+        ><uc-icon name="music"></uc-icon>@if (!collapseMenu) {
+        <span class="ml-2">Library</span>}</a
       >
     </li>
     <li>
@@ -13,7 +15,9 @@
         routerLink="/projects"
         routerLinkActive="uc-button--active"
         class="uc-navigation-menu-item uc-button uc-button--ghost uc-button--medium"
-        ><uc-icon name="package" class="mr-2"></uc-icon> Projects</a
+        title="Projects"
+        ><uc-icon name="package"></uc-icon>@if (!collapseMenu) {
+        <span class="ml-2">Projects</span>}</a
       >
     </li>
     <li>
@@ -21,7 +25,9 @@
         routerLink="/devices"
         routerLinkActive="uc-button--active"
         class="uc-navigation-menu-item uc-button uc-button--ghost uc-button--medium"
-        ><uc-icon name="headphones" class="mr-2"></uc-icon> Devices</a
+        title="Devices"
+        ><uc-icon name="headphones"></uc-icon>@if (!collapseMenu) {
+        <span class="ml-2">Devices</span>}</a
       >
     </li>
   </ul>

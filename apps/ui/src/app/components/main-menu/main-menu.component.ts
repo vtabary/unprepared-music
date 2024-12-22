@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IconComponent } from '@local/ui-components';
 
@@ -9,4 +9,7 @@ import { IconComponent } from '@local/ui-components';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, IconComponent, RouterLinkActive],
 })
-export class MainMenuComponent {}
+export class MainMenuComponent {
+  @Input()
+  public collapseMenu = false;
+}
