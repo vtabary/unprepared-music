@@ -7,9 +7,11 @@
     </p>
   </td>
   <td class="whitespace-nowrap p-2">
-    @for (tag of item.tags; track tag) {
-    <uc-chips>{{ tag }}</uc-chips>
-    }
+    <div class="flex gap-1">
+      @for (tag of item.tags; track tag) {
+      <span class="uc-badge">{{ tag }}</span>
+      }
+    </div>
   </td>
   <td class="whitespace-nowrap p-2">
     <unprepared-music-sound-controls

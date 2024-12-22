@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ISound } from '@local/shared-interfaces';
-import { ChipsComponent, IconComponent } from '@local/ui-components';
+import { IconComponent } from '@local/ui-components';
 import { SoundControlsComponent } from '../sound-controls/sound-controls.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { SoundControlsComponent } from '../sound-controls/sound-controls.compone
   templateUrl: './sound-card.component.html',
   styleUrls: ['./sound-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ChipsComponent, SoundControlsComponent, IconComponent],
+  imports: [SoundControlsComponent, IconComponent],
 })
 export class SoundCardComponent {
   @Input()
