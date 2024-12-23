@@ -61,7 +61,7 @@ export class LibraryService {
    * Returns the items actually loaded
    */
   public add(
-    item: Pick<ISound, 'path' | 'type'> &
+    item: Pick<ISound, 'path' | 'type' | 'duration'> &
       Partial<Pick<ISound, 'label' | 'tags'>>,
     filePath = this.currentLibraryPath
   ): Observable<ISound> {

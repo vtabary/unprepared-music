@@ -36,6 +36,7 @@ export class AddLibraryComponent implements OnInit, OnDestroy {
   });
 
   private onDestroy$ = new Subject<void>();
+  private currentDuration = -1;
 
   constructor(
     private library: LibraryService,
@@ -56,6 +57,7 @@ export class AddLibraryComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe((value) => {
+        this.currentDuration = value?.duration ?? -1;
         this.form.patchValue({
           label: value?.label,
           tags: value?.tags.join(', '),
@@ -80,10 +82,11 @@ export class AddLibraryComponent implements OnInit, OnDestroy {
 
     this.library
       .add({
-        path: 'local://' + this.form.value.file,
+        path: this.form.value.file,
         label: this.form.value.label ?? 'test',
-        tags: this.form.value.tags?.split(',') ?? [],
+        tags: this.form.value.tags ? this.form.value.tags?.split(',') : [],
         type: 'music',
+        duration: this.currentDuration,
       })
       .pipe(first())
       .subscribe(() => {

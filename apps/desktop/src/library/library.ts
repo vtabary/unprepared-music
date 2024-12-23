@@ -6,14 +6,7 @@ import { pathToFileURL } from 'url';
 
 const readLibrary = async (filePath: string): Promise<ISound[]> => {
   const content = await readFile(filePath, 'utf-8');
-  const result = JSON.parse(content) as ISound[];
-
-  return result.map((item) => {
-    return {
-      ...item,
-      path: convertPath(item.path, dirname(filePath)),
-    };
-  });
+  return JSON.parse(content) as ISound[];
 };
 
 const saveLibrary = async (
@@ -36,7 +29,6 @@ const convertPath = (itemPath: string, cwd: string): string => {
   if (/^\w:\/\/.*/.test(itemPath)) {
     return itemPath;
   }
-  console.log('path', pathToFileURL(resolve(cwd, itemPath)).toString());
   return pathToFileURL(resolve(cwd, itemPath))
     .toString()
     .replace(/^file:/, 'local:');
@@ -64,7 +56,10 @@ export const importLibraryHooks = () => {
     async (event, item: ISound, filePath: string) => {
       const library = await readLibrary(filePath);
 
-      library.push(item);
+      library.push({
+        ...item,
+        path: convertPath(item.path, dirname(filePath)),
+      });
       saveLibrary(library, filePath);
     }
   );

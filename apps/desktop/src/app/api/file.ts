@@ -1,7 +1,9 @@
 import { IFileFunctions } from '@local/shared-interfaces';
 import { ipcRenderer } from 'electron';
 
-const open = async (accept: string): Promise<string[]> => {
+const open = async (
+  accept: { name: string; extensions: string[] }[]
+): Promise<string[]> => {
   return ipcRenderer.invoke('file:open', accept);
 };
 

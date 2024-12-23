@@ -1,6 +1,7 @@
 import { IAudioFunctions } from '@local/shared-interfaces';
 import { ipcMain } from 'electron';
 import { parseFile } from 'music-metadata';
+import { basename, extname } from 'path';
 
 const getMetadata: IAudioFunctions['getMetadata'] = async (
   path: string
@@ -13,8 +14,8 @@ const getMetadata: IAudioFunctions['getMetadata'] = async (
 
   return {
     duration: metadata.format.duration,
-    label: metadata.common.title,
-    tags: [...metadata.common.genre].filter((item) => !!item),
+    label: metadata.common.title ?? basename(path, extname(path)),
+    tags: [...(metadata.common.genre ?? [])].filter((item) => !!item),
   };
 };
 

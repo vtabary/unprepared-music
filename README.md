@@ -3,7 +3,7 @@
 ## How to use
 
 ```shell
-yarn install
+npm install
 
 # Launch the UI
 npx nx serve ui
