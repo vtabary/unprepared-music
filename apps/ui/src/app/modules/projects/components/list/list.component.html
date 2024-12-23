@@ -1,9 +1,28 @@
 <uc-layout-column [grow]="48">
-  <h1 class="uc-header-1" ucColumnHeader>Load a project</h1>
+  <h1 class="uc-header-1 p-2" ucColumnHeader>Load a project</h1>
 
-  <ul ucColumnContent>
-    <li>
-      <button class="uc-button" (click)="onLoadProject()">Main</button>
-    </li>
-  </ul>
+  <div ucColumnContent class="p-2">
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onLoadProject()"
+      class="flex flex-col gap-2"
+    >
+      <div>
+        <label for="file">
+          Select a project file :
+          <uc-file-input id="file" formControlName="file"></uc-file-input>
+        </label>
+      </div>
+
+      <div>
+        <button
+          class="uc-button uc-button--primary"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Load
+        </button>
+      </div>
+    </form>
+  </div>
 </uc-layout-column>

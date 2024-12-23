@@ -7,12 +7,13 @@ export interface ISound {
 }
 
 export interface ILibraryFunctions {
-  list(): Promise<ISound[]>;
+  list(filePath: string): Promise<ISound[]>;
   add(
     item: Pick<ISound, 'path' | 'type'> &
-      Partial<Pick<ISound, 'label' | 'tags'>>
+      Partial<Pick<ISound, 'label' | 'tags'>>,
+    filePath: string
   ): Promise<ISound>;
-  remove(path: string): Promise<void>;
+  remove(path: string, filePath: string): Promise<void>;
 }
 
 export interface IAudioFunctions {

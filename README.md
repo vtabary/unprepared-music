@@ -21,6 +21,7 @@ npx nx serve desktop
 - Manage tags for a music entry: add or remove a tag
 - Set a song as starred
 - Project management (scoped library, scoped starred music, ...)
+  - [DONE] Load a project
 - Music session management
 - Display audio file thumbnail
 - Remote link support
@@ -33,3 +34,6 @@ npx nx serve desktop
 - Youtube support
 - Android support
 - Provide a Windows installer
+- Translate the app in French
+- Add a dark mode
+- Add a theme customization

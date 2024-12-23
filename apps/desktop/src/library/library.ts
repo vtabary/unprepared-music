@@ -1,23 +1,26 @@
 import { ISound } from '@local/shared-interfaces';
 import { ipcMain, net, protocol } from 'electron';
 import { readFile, writeFile } from 'fs/promises';
-import { resolve } from 'path';
+import { dirname, resolve } from 'path';
 import { pathToFileURL } from 'url';
 
-const readLibrary = async (): Promise<ISound[]> => {
-  const content = await readFile(
-    './apps/ui/src/assets/sounds/list.json',
-    'utf-8'
-  );
-  return JSON.parse(content) as ISound[];
+const readLibrary = async (filePath: string): Promise<ISound[]> => {
+  const content = await readFile(filePath, 'utf-8');
+  const result = JSON.parse(content) as ISound[];
+
+  return result.map((item) => {
+    return {
+      ...item,
+      path: convertPath(item.path, dirname(filePath)),
+    };
+  });
 };
 
-const saveLibrary = async (items: ISound[]): Promise<void> => {
-  await writeFile(
-    './apps/ui/src/assets/sounds/list.json',
-    JSON.stringify(items, undefined, 2),
-    'utf-8'
-  );
+const saveLibrary = async (
+  items: ISound[],
+  filePath: string
+): Promise<void> => {
+  await writeFile(filePath, JSON.stringify(items, undefined, 2), 'utf-8');
 };
 
 const removeLibraryItem = (items: ISound[], path: string): ISound[] => {
@@ -29,9 +32,19 @@ const removeLibraryItem = (items: ISound[], path: string): ISound[] => {
   return items;
 };
 
+const convertPath = (itemPath: string, cwd: string): string => {
+  if (/^\w:\/\/.*/.test(itemPath)) {
+    return itemPath;
+  }
+  console.log('path', pathToFileURL(resolve(cwd, itemPath)).toString());
+  return pathToFileURL(resolve(cwd, itemPath))
+    .toString()
+    .replace(/^file:/, 'local:');
+};
+
 protocol.registerSchemesAsPrivileged([
   {
-    scheme: 'test',
+    scheme: 'local',
     privileges: {
       // standard: true,
       // secure: true,
@@ -42,23 +55,31 @@ protocol.registerSchemesAsPrivileged([
 ]);
 
 export const importLibraryHooks = () => {
-  ipcMain.handle('library:list', async () => readLibrary());
+  ipcMain.handle('library:list', async (event, filePath: string) =>
+    readLibrary(filePath)
+  );
 
-  ipcMain.handle('library:add', async (event, item: ISound) => {
-    const library = await readLibrary();
+  ipcMain.handle(
+    'library:add',
+    async (event, item: ISound, filePath: string) => {
+      const library = await readLibrary(filePath);
 
-    library.push(item);
-    saveLibrary(library);
-  });
+      library.push(item);
+      saveLibrary(library, filePath);
+    }
+  );
 
-  ipcMain.handle('library:remove', async (event, path: string) => {
-    const library = await readLibrary();
-    const result = removeLibraryItem(library, path);
-    saveLibrary(result);
-  });
+  ipcMain.handle(
+    'library:remove',
+    async (event, path: string, filePath: string) => {
+      const library = await readLibrary(filePath);
+      const result = removeLibraryItem(library, path);
+      saveLibrary(result, filePath);
+    }
+  );
 
   protocol.handle('local', (request) => {
-    const filePath = request.url.slice('local://'.length);
-    return net.fetch(pathToFileURL(resolve(filePath)).toString());
+    const filePath = request.url.replace(/^local:\/\//, 'file://');
+    return net.fetch(filePath);
   });
 };
