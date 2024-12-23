@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
+  DirectoryInputComponent,
   FileInputComponent,
   LayoutColumnComponent,
 } from '@local/ui-components';
-import { Subject, takeUntil } from 'rxjs';
+import { map, NEVER, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { LibraryService } from '../../../shared/index';
 import { ProjectsHistoryService } from '../../services/project-history/project-history.service';
 
@@ -19,7 +20,12 @@ import { ProjectsHistoryService } from '../../services/project-history/project-h
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LayoutColumnComponent, FileInputComponent, ReactiveFormsModule],
+  imports: [
+    LayoutColumnComponent,
+    FileInputComponent,
+    DirectoryInputComponent,
+    ReactiveFormsModule,
+  ],
 })
 export class ListComponent {
   /**
@@ -27,6 +33,16 @@ export class ListComponent {
    */
   public form = new FormGroup({
     file: new FormControl<string | null>(null, [Validators.required]),
+  });
+  /**
+   * @internal
+   */
+  public formCreate = new FormGroup({
+    directory: new FormControl<string | null>(null, [Validators.required]),
+    projectName: new FormControl<string | null>(null, [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z0-9-_]+$/),
+    ]),
   });
   /**
    * @internal
@@ -40,7 +56,7 @@ export class ListComponent {
     private readonly projectHistory: ProjectsHistoryService,
     private readonly router: Router
   ) {
-    this.previousFiles = this.projectHistory.listEntries();
+    this.previousFiles = this.projectHistory.listEntries().reverse();
   }
 
   /**
@@ -48,23 +64,46 @@ export class ListComponent {
    */
   public onLoadProject() {
     const filePath = this.form.get('file')?.value;
-    this.onLoadFile(filePath ?? undefined);
+    this.loadFile(filePath ?? undefined).subscribe();
   }
 
   /**
    * @internal
    */
   public onLoadFile(filePath: string | undefined): void {
-    if (!filePath) {
+    this.loadFile(filePath).subscribe();
+  }
+
+  /**
+   * @internal
+   */
+  public onCreateProject(): void {
+    if (
+      !this.formCreate.value.directory ||
+      !this.formCreate.value.projectName
+    ) {
       return;
     }
-
     this.library
-      .load(filePath)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe(() => {
+      .create(
+        this.formCreate.value.directory,
+        this.formCreate.value.projectName
+      )
+      .pipe(switchMap((projectPath) => this.loadFile(projectPath)))
+      .subscribe();
+  }
+
+  private loadFile(filePath: string | undefined): Observable<void> {
+    if (!filePath) {
+      return NEVER;
+    }
+
+    return this.library.load(filePath).pipe(
+      takeUntil(this.onDestroy$),
+      map(() => {
         this.projectHistory.addEntry(filePath);
         this.router.navigateByUrl('/library');
-      });
+      })
+    );
   }
 }

@@ -8,6 +8,7 @@ export interface ISound {
 
 export interface ILibraryFunctions {
   list(filePath: string): Promise<ISound[]>;
+  create(directoryPath: string, projectName: string): Promise<string>;
   add(
     item: Pick<ISound, 'path' | 'type'> &
       Partial<Pick<ISound, 'label' | 'tags'>>,
@@ -26,4 +27,5 @@ export interface IAudioFunctions {
 
 export interface IFileFunctions {
   open(accept: { name: string; extensions: string[] }[]): Promise<string[]>;
+  openDirectory(): Promise<string[]>;
 }

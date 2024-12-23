@@ -1,33 +1,23 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { first } from 'rxjs';
 import { FileService } from '../../services/file/file.service';
 
 @Component({
-  selector: 'uc-file-input',
-  templateUrl: './file-input.component.html',
-  styleUrls: ['./file-input.component.scss'],
+  selector: 'uc-directory-input',
+  templateUrl: './directory-input.component.html',
+  styleUrls: ['./directory-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => FileInputComponent),
+      useExisting: forwardRef(() => DirectoryInputComponent),
     },
   ],
   imports: [],
 })
-export class FileInputComponent implements ControlValueAccessor {
-  @Input()
-  public accept: { name: string; extensions: string[] }[] = [
-    { name: 'All files', extensions: ['*'] },
-  ];
-
+export class DirectoryInputComponent implements ControlValueAccessor {
   /**
    * @internal
    */
@@ -42,7 +32,7 @@ export class FileInputComponent implements ControlValueAccessor {
     // Method will be replaced by Angular
   };
 
-  constructor(private file: FileService) {}
+  constructor(private readonly file: FileService) {}
 
   public registerOnChange(fn: (_: string) => void): void {
     this.onChange = fn;
@@ -64,7 +54,7 @@ export class FileInputComponent implements ControlValueAccessor {
     // We have to use the window.file API (custom electron API)
     // since Electron does not allow to set full path in a file input
     this.file
-      .open(this.accept)
+      .openDirectory()
       .pipe(first())
       .subscribe((result) => {
         this.onTouched(result[0]);

@@ -2,6 +2,18 @@
   <h1 class="uc-header-1 p-2" ucColumnHeader>Load a project</h1>
 
   <div ucColumnContent class="p-2 flex flex-col gap-2">
+    <h2 class="uc-header-2">Recent projects</h2>
+    <ul>
+      @for( entry of previousFiles; track entry) {
+      <li>
+        <button class="uc-button uc-button--link" (click)="onLoadFile(entry)">
+          {{ entry }}
+        </button>
+      </li>
+      }
+    </ul>
+
+    <h2 class="uc-header-2">Select an existing project</h2>
     <form
       [formGroup]="form"
       (ngSubmit)="onLoadProject()"
@@ -29,14 +41,41 @@
       </div>
     </form>
 
-    <ul>
-      @for( entry of previousFiles; track entry) {
-      <li>
-        <button class="uc-button uc-button--link" (click)="onLoadFile(entry)">
-          {{ entry }}
+    <h2 class="uc-header-2">Create a new project</h2>
+    <form
+      [formGroup]="formCreate"
+      (ngSubmit)="onCreateProject()"
+      class="flex flex-col gap-2"
+    >
+      <div>
+        <label for="directory">
+          Select a directory :
+          <uc-directory-input
+            id="directory"
+            formControlName="directory"
+          ></uc-directory-input>
+        </label>
+      </div>
+      <div>
+        <label for="projectName">
+          Choose the project name :
+          <input
+            id="projectName"
+            formControlName="projectName"
+            class="uc-input"
+          />
+        </label>
+      </div>
+
+      <div>
+        <button
+          class="uc-button uc-button--primary"
+          type="submit"
+          [disabled]="formCreate.invalid"
+        >
+          Create
         </button>
-      </li>
-      }
-    </ul>
+      </div>
+    </form>
   </div>
 </uc-layout-column>

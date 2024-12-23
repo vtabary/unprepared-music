@@ -52,6 +52,15 @@ export const importLibraryHooks = () => {
   );
 
   ipcMain.handle(
+    'library:create',
+    async (event, directoryPath: string, projectName: string) => {
+      const projectPath = resolve(directoryPath, `${projectName}.json`);
+      await saveLibrary([], projectPath);
+      return projectPath;
+    }
+  );
+
+  ipcMain.handle(
     'library:add',
     async (event, item: ISound, filePath: string) => {
       const library = await readLibrary(filePath);

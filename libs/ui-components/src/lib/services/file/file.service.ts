@@ -13,7 +13,7 @@ declare global {
 })
 export class FileService {
   /**
-   * Load items from a JSON file
+   * Display a dialog to select a file
    */
   public open(
     accept: { name: string; extensions: string[] }[]
@@ -24,5 +24,17 @@ export class FileService {
     }
 
     return from(window.file.open(accept));
+  }
+
+  /**
+   * Display a dialog to select a directory
+   */
+  public openDirectory(): Observable<string[]> {
+    if (!window.file) {
+      // We are outside of Electron
+      return of([]);
+    }
+
+    return from(window.file.openDirectory());
   }
 }

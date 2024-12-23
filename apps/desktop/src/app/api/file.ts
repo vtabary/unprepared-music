@@ -7,6 +7,11 @@ const open = async (
   return ipcRenderer.invoke('file:open', accept);
 };
 
+const openDirectory = async (): Promise<string[]> => {
+  return ipcRenderer.invoke('file:openDirectory');
+};
+
 export default {
   open,
+  openDirectory,
 } as IFileFunctions;

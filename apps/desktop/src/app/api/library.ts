@@ -5,6 +5,13 @@ const list = async (filePath: string): Promise<ISound[]> => {
   return ipcRenderer.invoke('library:list', filePath);
 };
 
+const create = async (
+  directoryPath: string,
+  projectName: string
+): Promise<string> => {
+  return ipcRenderer.invoke('library:create', directoryPath, projectName);
+};
+
 const add = async (item: ISound, filePath: string): Promise<ISound> => {
   return ipcRenderer.invoke('library:add', item, filePath);
 };
@@ -17,4 +24,5 @@ export default {
   list,
   add,
   remove,
+  create,
 } as ILibraryFunctions;

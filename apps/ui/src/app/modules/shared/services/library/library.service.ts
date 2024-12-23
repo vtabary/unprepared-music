@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { ILibraryFunctions, ISound } from '@local/shared-interfaces';
-import { from, map, mapTo, NEVER, Observable, of, switchMap, tap } from 'rxjs';
+import { from, map, NEVER, Observable, of, switchMap, tap } from 'rxjs';
 
 declare global {
   interface Window {
@@ -57,6 +57,18 @@ export class LibraryService {
     return Object.values(this.registry);
   }
 
+  public create(
+    directoryPath: string,
+    projectName: string
+  ): Observable<string> {
+    if (!window.library) {
+      // We are outside of Electron
+      return NEVER;
+    }
+
+    return from(window.library.create(directoryPath, projectName));
+  }
+
   /**
    * Returns the items actually loaded
    */
@@ -88,7 +100,7 @@ export class LibraryService {
     }
 
     return from(window.library.remove(item.path, filePath)).pipe(
-      switchMap((result) => this.load(filePath).pipe(mapTo(result)))
+      switchMap((result) => this.load(filePath).pipe(map(() => result)))
     );
   }
 

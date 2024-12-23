@@ -14,9 +14,24 @@ const open: IFileFunctions['open'] = async (
   return [];
 };
 
+const openDirectory: IFileFunctions['openDirectory'] = async (): Promise<
+  string[]
+> => {
+  const { canceled, filePaths } = await dialog.showOpenDialog({
+    properties: ['openDirectory'],
+  });
+  if (!canceled) {
+    return filePaths;
+  }
+
+  return [];
+};
+
 export const importFileHooks = () => {
   ipcMain.handle(
     'file:open',
     (event, accept: { name: string; extensions: string[] }[]) => open(accept)
   );
+
+  ipcMain.handle('file:openDirectory', (event) => openDirectory());
 };
