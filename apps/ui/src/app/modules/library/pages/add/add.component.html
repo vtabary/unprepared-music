@@ -9,7 +9,23 @@
     >
       <label>
         <span>Select a music file</span>
-        <uc-file-input formControlName="file"></uc-file-input>
+        <uc-file-input
+          formControlName="file"
+          [accept]="[
+            {
+              name: 'Audio files',
+              extensions: ['mp3', 'wav', 'ogg', 'flac', 'opus']
+            },
+            {
+              name: 'Video files',
+              extensions: ['mp4', 'ogv', 'webm']
+            },
+            {
+              name: 'All files',
+              extensions: ['*'],
+            },
+          ]"
+        ></uc-file-input>
       </label>
 
       <label>

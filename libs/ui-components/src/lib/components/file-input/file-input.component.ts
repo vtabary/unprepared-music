@@ -25,7 +25,9 @@ import { FileService } from '../../services/file/file.service';
 })
 export class FileInputComponent implements ControlValueAccessor {
   @Input()
-  public accept = 'audio/*';
+  public accept: { name: string; extensions: string[] }[] = [
+    { name: 'All files', extensions: ['*'] },
+  ];
 
   @ViewChild('fileInput', { read: HTMLInputElement })
   public fileInput!: HTMLInputElement;
@@ -66,7 +68,7 @@ export class FileInputComponent implements ControlValueAccessor {
     // We have to use the window.file API (custom electron API)
     // since Electron does not allow to set full path in a file input
     this.file
-      .open('')
+      .open(this.accept)
       .pipe(first())
       .subscribe((result) => {
         this.onTouched(result[0]);

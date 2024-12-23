@@ -15,7 +15,9 @@ export class FileService {
   /**
    * Load items from a JSON file
    */
-  public open(accept: string): Observable<string[]> {
+  public open(
+    accept: { name: string; extensions: string[] }[]
+  ): Observable<string[]> {
     if (!window.file) {
       // We are outside of Electron
       return of([]);

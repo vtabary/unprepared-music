@@ -2,9 +2,11 @@ import { IFileFunctions } from '@local/shared-interfaces';
 import { dialog, ipcMain } from 'electron';
 
 const open: IFileFunctions['open'] = async (
-  accept: string
+  accept: { name: string; extensions: string[] }[]
 ): Promise<string[]> => {
-  const { canceled, filePaths } = await dialog.showOpenDialog({});
+  const { canceled, filePaths } = await dialog.showOpenDialog({
+    filters: accept,
+  });
   if (!canceled) {
     return filePaths;
   }
@@ -13,5 +15,8 @@ const open: IFileFunctions['open'] = async (
 };
 
 export const importFileHooks = () => {
-  ipcMain.handle('file:open', (event, accept: string) => open(accept));
+  ipcMain.handle(
+    'file:open',
+    (event, accept: { name: string; extensions: string[] }[]) => open(accept)
+  );
 };

@@ -12,6 +12,7 @@ import {
 } from '@local/ui-components';
 import { Subject, takeUntil } from 'rxjs';
 import { LibraryService } from '../../../shared/index';
+import { ProjectsHistoryService } from '../../services/project-history/project-history.service';
 
 @Component({
   selector: 'unprepared-music-project-list',
@@ -27,15 +28,33 @@ export class ListComponent {
   public form = new FormGroup({
     file: new FormControl<string | null>(null, [Validators.required]),
   });
-  private onDestroy$ = new Subject<void>();
+  /**
+   * @internal
+   */
+  public previousFiles: string[];
 
-  constructor(private library: LibraryService, private router: Router) {}
+  private readonly onDestroy$ = new Subject<void>();
+
+  constructor(
+    private readonly library: LibraryService,
+    private readonly projectHistory: ProjectsHistoryService,
+    private readonly router: Router
+  ) {
+    this.previousFiles = this.projectHistory.listEntries();
+  }
 
   /**
    * @internal
    */
   public onLoadProject() {
     const filePath = this.form.get('file')?.value;
+    this.onLoadFile(filePath ?? undefined);
+  }
+
+  /**
+   * @internal
+   */
+  public onLoadFile(filePath: string | undefined): void {
     if (!filePath) {
       return;
     }
@@ -44,6 +63,7 @@ export class ListComponent {
       .load(filePath)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(() => {
+        this.projectHistory.addEntry(filePath);
         this.router.navigateByUrl('/library');
       });
   }

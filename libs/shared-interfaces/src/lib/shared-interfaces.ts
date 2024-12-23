@@ -25,5 +25,5 @@ export interface IAudioFunctions {
 }
 
 export interface IFileFunctions {
-  open(accept: string): Promise<string[]>;
+  open(accept: { name: string; extensions: string[] }[]): Promise<string[]>;
 }

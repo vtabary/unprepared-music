@@ -1,7 +1,7 @@
 <uc-layout-column [grow]="48">
   <h1 class="uc-header-1 p-2" ucColumnHeader>Load a project</h1>
 
-  <div ucColumnContent class="p-2">
+  <div ucColumnContent class="p-2 flex flex-col gap-2">
     <form
       [formGroup]="form"
       (ngSubmit)="onLoadProject()"
@@ -10,7 +10,11 @@
       <div>
         <label for="file">
           Select a project file :
-          <uc-file-input id="file" formControlName="file"></uc-file-input>
+          <uc-file-input
+            id="file"
+            formControlName="file"
+            [accept]="[{ name: 'JSON files', extensions: ['json'] }]"
+          ></uc-file-input>
         </label>
       </div>
 
@@ -24,5 +28,15 @@
         </button>
       </div>
     </form>
+
+    <ul>
+      @for( entry of previousFiles; track entry) {
+      <li>
+        <button class="uc-button uc-button--link" (click)="onLoadFile(entry)">
+          {{ entry }}
+        </button>
+      </li>
+      }
+    </ul>
   </div>
 </uc-layout-column>
