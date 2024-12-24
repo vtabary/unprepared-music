@@ -1,24 +1,28 @@
-<button (click)="onRefresh()" class="uc-button">Refresh</button>
+<div class="p-2">
+  <button (click)="onRefresh()" class="uc-button">Refresh</button>
 
-@if (devices$ | async; as devices) { @if (devices.length > 0) {
-<ul>
-  @for (device of devices; track device) {
-  <li>
-    @if (mainId === device.deviceId) {
-    <span>[Main]</span>
-    } @if (testId === device.deviceId) {
-    <span>[Test]</span>
+  @if (devices$ | async; as devices) { @if (!errorMessage) { @if (devices.length
+  > 0) {
+  <ul>
+    @for (device of devices; track device) {
+    <li class="flex flex-row gap-2 mb-2">
+      <span class="grow">{{ device.label || 'Device without label' }}</span>
+      <button
+        (click)="onSelectMainDevice(device.deviceId)"
+        class="uc-button"
+        [ngClass]="{ 'uc-button--primary': mainId === device.deviceId }"
+      >
+        Select as main
+      </button>
+      <button
+        (click)="onSelectTestDevice(device.deviceId)"
+        class="uc-button"
+        [ngClass]="{ 'uc-button--primary': testId === device.deviceId }"
+      >
+        Select as test
+      </button>
+    </li>
     }
-    <span>{{ device.label || 'Device without label' }}</span>
-    <button (click)="onSelectMainDevice(device.deviceId)" class="uc-button">
-      Select as main
-    </button>
-    <button (click)="onSelectTestDevice(device.deviceId)" class="uc-button">
-      Select as test
-    </button>
-  </li>
-  }
-</ul>
-} @else { No device is returned by the application. Either you have no
-peripherals, you didn't accept the permission to access to the microphone. We
-need this one to list the peripherals. } }
+  </ul>
+  } @else { No device available. } } @else { {{ errorMessage }} } }
+</div>

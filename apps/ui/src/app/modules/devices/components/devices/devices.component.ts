@@ -1,6 +1,6 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { catchError, from, of, Subject } from 'rxjs';
 import { PlayerConfigurationService } from '../../../configuration/index';
 
 @Component({
@@ -8,7 +8,7 @@ import { PlayerConfigurationService } from '../../../configuration/index';
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, NgClass],
 })
 export class DevicesComponent implements OnInit {
   /**
@@ -23,6 +23,10 @@ export class DevicesComponent implements OnInit {
    * @internal
    */
   public testId = 'default';
+  /**
+   * @internal
+   */
+  public errorMessage?: string;
 
   constructor(private playerConfiguration: PlayerConfigurationService) {}
 
@@ -30,7 +34,7 @@ export class DevicesComponent implements OnInit {
    * @internal
    */
   public ngOnInit(): void {
-    void this.getDevices();
+    this.onRefresh();
     this.mainId = this.playerConfiguration.getMainSinkId();
     this.testId = this.playerConfiguration.getTestSinkId();
   }
@@ -54,11 +58,22 @@ export class DevicesComponent implements OnInit {
   /**
    * @internal
    */
-  public async onRefresh(): Promise<void> {
-    return this.getDevices();
+  public onRefresh(): void {
+    this.errorMessage = undefined;
+
+    from(this.getDevices())
+      .pipe(
+        catchError((e) => {
+          this.errorMessage = e.message;
+          return of([]);
+        })
+      )
+      .subscribe({
+        next: (devices) => this.devices$.next(devices),
+      });
   }
 
-  private async getDevices(): Promise<void> {
+  private async getDevices(): Promise<MediaDeviceInfo[]> {
     if (!navigator.mediaDevices?.enumerateDevices) {
       throw new Error('enumerateDevices not supported');
     }
@@ -67,11 +82,20 @@ export class DevicesComponent implements OnInit {
       await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
 
       const devices = await navigator.mediaDevices.enumerateDevices();
-      this.devices$.next(
-        devices.filter((device) => device.kind === 'audiooutput')
-      );
+      return devices.filter((device) => device.kind === 'audiooutput');
     } catch (e) {
-      this.devices$.next([]);
+      if (
+        e instanceof DOMException &&
+        e.name === 'NotAllowedError' &&
+        e.message === 'Permission denied by system'
+      ) {
+        throw new Error(
+          'Permission denied by the system. Please allow the microphone access from your system settings (ex: Windows > Settings > Privacy).'
+        );
+      }
+
+      throw new Error(`No device is returned by the application. Either you have no
+  peripherals, you didn't accept the permission to access to the microphone. This one is required to list the peripherals.`);
     }
   }
 }

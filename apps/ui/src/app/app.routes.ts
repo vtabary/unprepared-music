@@ -14,13 +14,6 @@ export const appRoutes: Route[] = [
           ),
       },
       {
-        path: 'devices',
-        loadChildren: () =>
-          import('./modules/devices/devices.module').then(
-            (m) => m.DevicesModule
-          ),
-      },
-      {
         path: '',
         outlet: 'sidebar',
         loadChildren: () =>
@@ -34,6 +27,11 @@ export const appRoutes: Route[] = [
       import('./modules/projects/projects.module').then(
         (m) => m.ProjectsModule
       ),
+  },
+  {
+    path: 'devices',
+    loadChildren: () =>
+      import('./modules/devices/devices.module').then((m) => m.DevicesModule),
   },
   {
     path: '**',
