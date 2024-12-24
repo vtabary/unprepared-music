@@ -1,6 +1,15 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { ILibraryFunctions, ISound } from '@local/shared-interfaces';
-import { from, map, NEVER, Observable, of, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  from,
+  map,
+  NEVER,
+  Observable,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 declare global {
   interface Window {
@@ -13,12 +22,16 @@ declare global {
 })
 export class LibraryService {
   /**
-   * Will trigger an event every time an item is added ou removed
+   * Will be triggered an event every time an item is added ou removed
    */
   public change = new EventEmitter<ISound[]>();
+  /**
+   * Will be triggered when a library is loaded
+   */
+  public loaded = new BehaviorSubject<boolean>(false);
 
   private registry: Record<string, ISound> = {};
-  private loaded = false;
+  private _loaded = false;
   private currentLibraryPath?: string;
 
   public getCurrentLibraryPath(): string | undefined {
@@ -26,7 +39,7 @@ export class LibraryService {
   }
 
   public isLoaded(): boolean {
-    return this.loaded;
+    return this._loaded;
   }
 
   /**
@@ -44,7 +57,8 @@ export class LibraryService {
           items.map((item) => [item.path, item])
         );
         this.currentLibraryPath = filePath;
-        this.loaded = true;
+        this._loaded = true;
+        this.loaded.next(true);
         this.change.emit(items);
       })
     );

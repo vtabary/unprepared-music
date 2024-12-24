@@ -5,6 +5,9 @@
         routerLink="/library"
         routerLinkActive="uc-button--active"
         class="uc-navigation-menu-item uc-button uc-button--ghost uc-button--medium"
+        [ngClass]="{
+          'uc-button--disabled': (isLibraryLoaded$ | async) === false
+        }"
         title="Library"
         ><uc-icon name="music"></uc-icon>@if (!collapseMenu) {
         <span class="ml-2">Library</span>}</a
