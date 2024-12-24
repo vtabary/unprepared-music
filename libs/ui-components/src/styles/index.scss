@@ -1,3 +1,4 @@
+@use './tailwind';
 @use './colors';
 @use './typography';
 @use './icon';
@@ -6,3 +7,4 @@
 @use './input';
 @use './layout';
 @use './navigation-menu';
+@use './toast';

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { FileInputComponent } from './file-input.component';
 
 export const ActionsData = {
-  accept: 'audio/*',
+  accept: [{ name: 'Audio files', extensions: ['mp3', 'wav'] }],
 };
 
 const meta: Meta<FileInputComponent> = {
@@ -23,21 +23,3 @@ type Story = StoryObj<FileInputComponent>;
 export const Default: Story = {
   args: {},
 };
-
-// export const Pinned: Story = {
-//   args: {
-//     task: {
-//       ...Default.args?.task,
-//       state: 'TASK_PINNED',
-//     },
-//   },
-// };
-
-// export const Archived: Story = {
-//   args: {
-//     task: {
-//       ...Default.args?.task,
-//       state: 'TASK_ARCHIVED',
-//     },
-//   },
-// };
