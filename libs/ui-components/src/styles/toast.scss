@@ -1,0 +1,66 @@
+@keyframes uc-toast-slide-in {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes uc-toast-slide-out {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.uc-toast--slide {
+  @apply -z-50;
+  animation: uc-toast-slide-in 0.5s forwards,
+    uc-toast-slide-out 0.5s forwards 5s;
+}
+
+.uc-toast {
+  @apply block border border-solid rounded-lg shadow-md p-4 min-w-32 w-96 flex flex-row bg-white;
+
+  border-color: var(--uc-neutral-color-hover);
+}
+
+.uc-toast:hover {
+  animation-play-state: paused;
+}
+
+.uc-toast-column {
+  @apply flex flex-col justify-center;
+}
+
+.uc-toast-column:first-child {
+  @apply grow;
+}
+
+.uc-toast-header {
+  @apply font-semibold mb-2;
+
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.uc-toast-content {
+  @apply flex items-center justify-between text-sm;
+
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.uc-toast-action {
+  @apply flex items-center justify-center whitespace-nowrap;
+
+  grid-column: 2;
+  grid-row: span 2;
+}

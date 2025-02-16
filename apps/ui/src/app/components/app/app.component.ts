@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { IconComponent, LayoutColumnComponent } from '@local/ui-components';
+import {
+  IconComponent,
+  LayoutColumnComponent,
+  ToastContainerComponent,
+} from '@local/ui-components';
 import { MainMenuComponent } from '../main-menu/main-menu.component';
 
 @Component({
@@ -12,6 +16,7 @@ import { MainMenuComponent } from '../main-menu/main-menu.component';
     MainMenuComponent,
     RouterOutlet,
     IconComponent,
+    ToastContainerComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,0 +1,35 @@
+<div class="uc-toast-container">
+  @let toasts= toasts$ | async; @for (toast of toasts; track toast.index; let
+  isLast = $last) {
+  <div
+    class="uc-toast"
+    [ngClass]="{
+      'uc-toast--slide': isLast
+    }"
+    (click)="onHide()"
+  >
+    <div class="uc-toast-column">
+      @if (toast.title) {
+      <div class="uc-toast-header">
+        <h4>{{ toast.title }}</h4>
+      </div>
+      }
+      <div class="uc-toast-content">{{ toast.message }}</div>
+    </div>
+
+    @if (toast.action && toast.actionOutput) {
+    <div class="uc-toast-column">
+      <div class="uc-toast-action">
+        <button
+          type="button"
+          class="uc-button uc-button--primary"
+          (click)="$event.stopPropagation(); toast.actionOutput.next()"
+        >
+          {{ toast.action }}
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

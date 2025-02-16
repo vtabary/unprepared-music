@@ -1,5 +1,6 @@
 import { AsyncPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ToastService } from '@local/ui-components';
 import { catchError, from, of, Subject } from 'rxjs';
 import { PlayerConfigurationService } from '../../../configuration/index';
 
@@ -28,7 +29,10 @@ export class DevicesComponent implements OnInit {
    */
   public errorMessage?: string;
 
-  constructor(private playerConfiguration: PlayerConfigurationService) {}
+  constructor(
+    private readonly playerConfiguration: PlayerConfigurationService,
+    private readonly toast: ToastService
+  ) {}
 
   /**
    * @internal
@@ -64,7 +68,10 @@ export class DevicesComponent implements OnInit {
     from(this.getDevices())
       .pipe(
         catchError((e) => {
-          this.errorMessage = e.message;
+          this.toast.show({
+            message: e.message,
+            title: 'Error',
+          });
           return of([]);
         })
       )

@@ -18,19 +18,19 @@ const meta: Meta<IconComponent> = {
   argTypes: {},
   render: (args: any) => ({
     template: `
-<h1 class="header-1">Header with icon <uc-icon
+<h1 class="uc-header-1">Header with icon <uc-icon
   title="${args.title}"
   name="${args.name}"
 ></uc-icon></h1>
-<h2 class="header-2">Header with icon <uc-icon
+<h2 class="uc-header-2">Header with icon <uc-icon
   title="${args.title}"
   name="${args.name}"
 ></uc-icon></h2>
-<h3 class="header-3">Header with icon <uc-icon
+<h3 class="uc-header-3">Header with icon <uc-icon
   title="${args.title}"
   name="${args.name}"
 ></uc-icon></h3>
-<h4 class="header-4">Header with icon <uc-icon
+<h4 class="uc-header-4">Header with icon <uc-icon
   title="${args.title}"
   name="${args.name}"
 ></uc-icon></h4>
